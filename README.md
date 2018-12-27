@@ -1,6 +1,8 @@
 # Learning Go
 
-## Hello World
+## Part I, Using the tour
+### 1. Welcome
+#### 1.1 Hello World
 ```
 package main
 
@@ -10,12 +12,42 @@ func main() {
     fmt.Printf("Hello, world\n")
 }
 ```
+Update:
+```
+package main
 
-## Packages
-### `main` package
-Go program must start running in package `main`.
+import "fmt"
 
-### *Factored* import
+func main() {
+	const 名字 = "世界"
+	fmt.Printf("Hello, %v\n", 名字)
+}
+```
+Note that any unicode letters can be used for variable names.
+
+#### 1.2 Go local
+The tour is available in many different languages
+
+#### 1.3 Go offline
+The tour is also available as a stand-alone program. Run following command to install it:
+```
+go get golang.org/x/tour
+```
+Then run `tour` to start it.
+
+#### 1.4 The Go Playground
+The tour is built atop the [Go Playground](https://play.golang.org). This services can be used to test ideas online.
+
+#### 1.5 Congratulations
+You now know how to use this tour.
+
+## Part II Basics
+### 2. Packages, variables and funcitons
+#### 2.1  Packages
+Go program consists of packages. Go program must start running in package `main`.
+
+#### 2.2 Imports
+Import statements can be grouped into *Factored* import.
 ```
 import (
     "fmt"
@@ -27,14 +59,13 @@ This is preferred format over:
 import "fmt"
 import "math/rand"
 ```
-### Exported names
+#### 2.3 Exported names
 A is exported if it begins with a capital letter, for example: `Pi`.
 
 `math.pi` is not exported, `math.Pi` is.
 
-### Functions
-
-#### function declaration/definition
+#### 2.4 Functions
+Function declaration/definition
 An example of function:
 ```
 func add(x int, y int) int {
@@ -43,7 +74,8 @@ func add(x int, y int) int {
 ```
 Notice the argument list, return type
 
-#### combine type annotation
+#### 2.5 Functions continued
+Combine type annotation
 ```
 x int, y int
 ```
@@ -52,14 +84,15 @@ can be combined as:
 x, y int
 ```
 
-#### multiple results (similar to returning tuple in Python)
+#### 2.6 Multiple result
+Function can return multiple results (similar to returning tuple in Python)
 ```
 func swap(x, y string) (string, string) {
     return y, x
 }
 ```
 
-#### Named return values
+#### 2.7 Named return values
 ```
 func split(sum int) (x, y int) {
     x = sum * 4 / 9
@@ -69,7 +102,7 @@ func split(sum int) (x, y int) {
 ```
 The `return` statement has no arguments, it is a *naked* return. It should only be used in short functions.
 
-### Variables
+#### 2.8 Variables
 Use `var` to declare a list of variables.
 A `var` statement can be used both at package level or at function level.
 ```
@@ -85,18 +118,18 @@ func main() {
 }
 ```
 
-#### Variable with initializer
+#### 2.9 Variable with initializers
 If an initializer is present, type definition can be omitted.
 ```
 var i, j int = 1, 2
 ```
 
-#### Short variable declaration
+#### 2.10 Short variable declaration
 Short assignment `:=` can be used inside a function. It can only be used inside a function, where a `var` declaration with implicit type is allowed.
 
 It seems `:=` defines variable on the stack.
 
-### Basic Types
+#### 2.11 Basic Types
 Following are built-in types of Go
 ```
 var (
@@ -106,7 +139,7 @@ var (
     Message string = "hello"
 
     counter int = 2
-    ascii int8 = 4 
+    ascii int8 = 4
     myvar int16 = 32767
     myvar2 int32 = 65536
     myint3 int64
@@ -117,10 +150,10 @@ var (
     myuint5 uint64
     myuintptr uintptr
 
-    y byte // alias for uint8
+    y byte  // alias for uint8
 
-    x rune // alias for int32
-                 // represents a Unicode code point
+    x rune  // alias for int32
+            // represents a Unicode code point
 
     varF32 float32
     varF64 float64
@@ -130,10 +163,10 @@ var (
 )
 ```
 
-#### Zero values
+#### 2.12 Zero values
 Variable without initializer will have default zero value. 0 for numeric types, false for bool, '' for string.
 
-### Type Conversion
+#### 2.13 Type Conversion
 Type conversion must be explicit, `T(v)`, examples:
 ```
 var i int = 42
@@ -148,7 +181,7 @@ u := uint(f)
 ```
 This simpler form can be used inside a function.
 
-### Type inference
+#### 2.14 Type inference
 Type can be inferred when declaring a variable from the right hand side.
 Examples:
 ```
@@ -160,23 +193,27 @@ f := 3.142        // float64
 g := 0.867 + 0.5i // complex128
 ```
 
-### Constant
+#### 2.15 Constants
 Constant can be declared with `const`. Constants cannot be declared using `:=` syntax.
 
 This implies constants won't get allocated in stack, only in the heap.
 
-### Numeric Constants
+#### 2.16 Numeric Constants
 Numeric constants are high-precision values.
 
-## Control flows of Go
+#### 2.17 Congratulations
+This module is done
 
-### For loop
+### 3. Flow control statements: for, if, else, switch and defer
+
+#### 3.1 For loop
 ```
 sum := 0
 for i := 0; i < 10; i++ {
     sum += i
 }
 ```
+#### 3.2 For continued
 Initializer, post statement can be omitted
 ```
 sum := 1
@@ -184,12 +221,14 @@ for ; sum < 1000; {
     sum += sum
 }
 ```
+#### 3.3 For is Go's `while`
 Simicolons can also be dropped and it becomes `while`
 ```
 for sum < 1000 {
     sum += sum
 }
 ```
+#### 3.4 Forever
 If condition is omitted, it becomes forever
 ```
 for {
@@ -197,7 +236,7 @@ for {
 }
 ```
 
-### `if` statement
+#### 3.5 `if` statement
 Parenthesis can be omitted, braces are needed
 ```
 if x < 0 {
@@ -206,15 +245,53 @@ if x < 0 {
     fmt.Printf("x is no less than 0")
 }
 ```
-#### `if` with short statement
+#### 3.6 `if` with short statement
 `if` can start with a short statment
 ```
 if v := input; v < limit {
     fmt.Printf("input is less than limit")
 }
 ```
+#### 3.7 `if` and `else`
+```
+if v := math.Power(x, n); v < lim {
+    return v
+} else {
+    fmr.Printf("%g >= %g\n", v, lim)
+}
+```
 
-### `switch` statement
+#### 3.8 Esercise: Loops and Functions
+Implement a function `Sqrt` that calculates square root of given value.
+```
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func Sqrt(x float64) float64 {
+	z := 1.0
+	var stillBig = true
+	for counter := 0; stillBig && counter < 200; counter ++ {
+		delta :=(z*z - x) / (2 * z)
+		stillBig = math.Abs(delta) > 1.e-10
+		fmt.Println("counter=", counter, "z=", z, "delta=", delta, "big?", stillBig)
+		z -= delta
+	}
+	return z
+
+}
+
+func main() {
+	fmt.Println("Square root of 2 is", Sqrt(2))
+	fmt.Println("result from math.Sqrt", math.Sqrt(2))
+	fmt.Println("math.abs(-2)", math.Abs(-2))
+}
+```
+
+#### 3.9 `switch` statement
 Example:
 ```
 switch os := runtime.GOOS; os {
@@ -229,10 +306,10 @@ default:
 }
 ```
 
-#### `switch` evaluation order
+#### 3.10 `switch` evaluation order
 From top to bottom, stopping when a case succeeds.
 
-#### `switch` can be written with no condition
+#### 3.11 `switch` can be written with no condition
 ```
 t := time.Now()
 switch {
@@ -245,7 +322,7 @@ default:
 }
 ```
 
-### `defer` statement
+#### 3.12 `defer` statement
 Defers the execution until the surrounding function returns.
 ```
 package main
@@ -259,11 +336,14 @@ func main() {
 }
 ```
 
-#### Stacking `defer`s
+#### 3.13 Stacking `defer`s
 `defer` will be stacked, they will be executed in last-in-first-out order.
 
-## More types: structs, slices, maps
-### Pointer
+#### 3.14 Congratulations
+This module finishes.
+
+### 4 More types: structs, slices, maps
+#### 4.1 Pointer
 Define a point type using `*`. Get address using `&`.
 ```
 package main
@@ -283,7 +363,7 @@ func main() {
     fmt.Println(j) // see the new value of j
 }
 ```
-### Struct
+#### 4.2 Structs
 Struct defines a collection of fields
 ```
 package main
@@ -300,10 +380,12 @@ func main() {
 }
 ```
 
-#### Pointers to structs
+#### 4.3 Struct fields
+
+#### 4.4 Pointers to structs
 `(*p).X` is cumbersome, language permits to write `p.X`.
 
-#### struct literals
+#### 4.5 Struct literals
 ```
 package main
 
@@ -325,7 +407,7 @@ func main() {
 }
 ```
 
-### Array
+#### 4.6 Arrays
 `[n]T` is an array of n values of type T
 ```
 package main
@@ -344,7 +426,7 @@ func main() {
 }
 ```
 
-#### Array slice
+#### 4.7 Array slices
 A slice is defined by two indices, e.g. `a[low:high]`
 ```
 package main
@@ -359,7 +441,7 @@ func main() {
 }
 ```
 
-#### Array slices are references
+#### 4.8 Array slices are references
 ```
 package main
 
@@ -384,7 +466,7 @@ func main() {
 }
 ```
 
-#### Slice literals
+#### 4.9 Slice literals
 A slice literals defines an array without the length
 ```
 package main
@@ -413,7 +495,7 @@ func main() {
 }
 ```
 
-#### Slice defaults
+#### 4.10 Slice defaults
 If lower/upper bound is omitted, it defaults to 0 and length of array.
 For the array
 ```
@@ -427,7 +509,7 @@ a[0:]
 a[:]
 ```
 
-#### Slice length and capacity
+#### 4.11 Slice length and capacity
 A slice has both a *length* and a *capacity*, these can be reported by `len(s)` and `cap(s)` respectively.
 ```
 package main
@@ -456,7 +538,7 @@ func printSlice(s []int) {
 }
 ```
 
-#### Nil slices
+#### 4.12 Nil slices
 Nil slices has a zero length and capacity.
 ```
 package main
@@ -472,7 +554,7 @@ func main() {
 }
 ```
 
-#### Creating slice with `make`
+#### 4.13 Creating slice with `make`
 Slices can be created with function `make`.
 ```
 package main
@@ -499,7 +581,7 @@ func printSlice(s string, x []int) {
 }
 ```
 
-#### Slices of slices
+#### 4.14 Slices of slices
 Slice can contain any type, including other slices
 ```
 package main
@@ -530,7 +612,7 @@ func main() {
 }
 ```
 
-#### Appending to a slice
+#### 4.15 Appending to a slice
 Built-in function `append` can be used to append new elements to a slice
 ```
 var s []int
@@ -539,7 +621,7 @@ var s []int
 s = append(s, 0, 1, 2)
 ```
 
-#### Range
+#### 4.16 Range
 `for` statement has a `range` form, for example:
 ```
 package main
@@ -554,6 +636,7 @@ func main() {
     }
 }
 ```
+#### 4.17 Range continued
 You can skip index by using variable name `_`.
 ```
 for _, value := range pow {
@@ -561,7 +644,7 @@ for _, value := range pow {
 }
 ```
 
-### Exercise: Slices
+#### 4.18 Exercise: Slices
 ```
 package main
 
@@ -585,7 +668,7 @@ func main() {
 }
 ```
 
-### Map
+#### 4.19 Maps
 A map maps keys to values. Zero value of a map is `nil`. A `nil` map has no keys, nor can keys be added. The `make` function can return a map of given type.
 ```
 package main
@@ -607,8 +690,11 @@ func main() {
 }
 ```
 
-#### Map literals
+#### 4.20 Map literals
 Map literals can be used to initialize a map.
+
+#### 4.21 Map literals continued
+
 ```
 package main
 
@@ -638,7 +724,48 @@ func main() {
     fmt.Println(m2)
 }
 ```
-#### Exercise: Maps
+
+#### 4.22 Mutating Maps
+Assign an element
+```
+m[key] = elem
+```
+Retrieve an element
+```
+elem = m[key]
+```
+Test if a key is defined with a two-value assignment
+```
+elem, ok = m[key]
+```
+or
+```
+elem, ok := m[key]
+```
+Example:
+```
+package main
+
+import "fmt"
+
+func main() {
+    m := make(map[string]int)
+
+    m["Answer"] = 42
+    fmt.Println("The value:", m["Answer"])
+
+    m["Answer"] = 48
+    fmt.Println("The value:", m["Answer"])
+
+    delete(m, "Answer")
+    fmt.Println("The value:", m["Answer"])
+
+    v, ok := m["Answer"]
+    fmt.Println("The value:", v, "Present?", ok)
+}
+```
+
+#### 4.23 Exercise: Maps
 ```
 package main
 
@@ -700,7 +827,7 @@ func main() {
 }
 ```
 
-### Function Values
+#### 4.24 Function Values
 Function values are like function objects in JavaScript.
 ```
 package main
@@ -725,7 +852,7 @@ func main() {
 }
 ```
 
-#### Function closures
+#### 4.25 Function closures
 Function closure is similar to JavaScript's equivalent
 ```
 package main
@@ -751,7 +878,7 @@ func main() {
 }
 ```
 
-#### Exercise: Fibonacci closure
+#### 4.26 Exercise: Fibonacci closure
 
 ```
 package main
@@ -778,6 +905,7 @@ func main() {
     }
 }
 ```
+#### 4.27 Congratulations
 
 ## Methods and interfaces
 Go doesn't have classes but one can define methods on types.
@@ -1211,7 +1339,7 @@ func (ip IPAddr) String() string {
 func main() {
     ss := []string{string('1'),string('2'),string('3'),string('4')}
     fmt.Println(strings.Join(ss, "."))
-    
+
     hosts := map[string]IPAddr{
         "loopback":  {127, 0, 0, 1},
         "googleDNS": {8, 8, 8, 8},
@@ -1222,8 +1350,8 @@ func main() {
 }
 ```
 
-### Errors 
-Error Type is a built-in interface 
+### Errors
+Error Type is a built-in interface
 ```
 type error interface {
     Error() string
@@ -1357,7 +1485,7 @@ type rot13Reader struct {
 }
 
 func (r13 rot13Reader) Read(b []byte) (n int, e error) {
-    return r13.r.Read(b) 
+    return r13.r.Read(b)
 }
 
 func main() {
@@ -1383,7 +1511,7 @@ type rot13Reader struct {
 }
 
 func (r13 rot13Reader) Read(b []byte) (n int, e error) {
-    return r13.r.Read(b) 
+    return r13.r.Read(b)
 }
 
 func main() {
@@ -1621,3 +1749,253 @@ func main() {
 ```
 
 ### Exercise: Equivalent Binary Trees
+Use predefined tree structure
+```
+type Tree struct {
+    Left *Tree
+    Value int
+    Right *Tree
+}
+```
+First, implement a `Walk` function that traverse tree and emits its value
+```
+package main
+
+import (
+    "fmt"
+    "golang.org/x/tour/tree"
+)
+
+func Walk(t *tree.Tree, ch chan int) {
+    if t.Left != nil {
+        Walk(t.Left, ch)
+    }
+    ch <= t.Value
+    if t.Right != nil {
+        Walk(t.Right, ch)
+    }
+}
+
+func main() {
+    t1 := tree.New(1)
+    ch := make(chan int)
+    go Walk(t1, ch)
+    const n = 10
+    for i := 0; i < n; i++ {
+        fmt.Println(<-ch, " ")
+    }
+}
+```
+Then implement `Same` function to determine if two trees store the same values.
+```
+package main
+
+import (
+    "fmt"
+    //"strings"
+    "golang.org/x/tour/tree"
+)
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+func Walk(t *tree.Tree, ch chan int) {
+    if t.Left != nil {
+        //fmt.Println("walk left")
+        Walk(t.Left, ch)
+    }
+    ch <- t.Value
+    if t.Right != nil {
+        //fmt.Println("walk right")
+        Walk(t.Right, ch)
+    }
+}
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool {
+    ch1 := make(chan int)
+    ch2 := make(chan int)
+    seq1 := make([]int, 10)
+    seq2 := make([]int, 10)
+    go Walk(t1, ch1)
+    go Walk(t2, ch2)
+    for i := 0; i < 10; i++ {
+        seq1 = append(seq1, <-ch1)
+    }
+    for j := 0; j < 10; j++ {
+        seq2 = append(seq2, <-ch2)
+    }
+    rs1 := fmt.Sprintf("%q", seq1)
+    rs2 := fmt.Sprintf("%q", seq2)
+
+    return rs1 == rs2
+}
+
+func main() {
+    t1a := tree.New(1)
+    t1b := tree.New(1)
+    t2 := tree.New(2)
+    fmt.Printf("Same(t1a, t1b) -> %v\n", Same(t1a, t1b))
+    fmt.Printf("Same(t1a, t2) -> %v\n", Same(t1a, t2))
+}
+```
+
+### sync.Mutex
+In Go, one can use `sync.Mutex` to achieve *Mutual Exclusion*.
+```
+package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+// SafeCounter is safe to use concurrently.
+type SafeCounter struct {
+    v   map[string]int
+    mux sync.Mutex
+}
+
+// Inc increments the counter for the given key.
+func (c *SafeCounter) Inc(key string) {
+    c.mux.Lock()
+    // Lock so only one goroutine at a time can access the map c.v.
+    c.v[key]++
+    c.mux.Unlock()
+}
+
+// Value returns the current value of the counter for the given key.
+func (c *SafeCounter) Value(key string) int {
+    c.mux.Lock()
+    // Lock so only one goroutine at a time can access the map c.v.
+    defer c.mux.Unlock()
+    return c.v[key]
+}
+
+func main() {
+    c := SafeCounter{v: make(map[string]int)}
+    for i := 0; i < 1000; i++ {
+        go c.Inc("somekey")
+    }
+
+    time.Sleep(time.Second)
+    fmt.Println(c.Value("somekey"))
+}
+```
+
+### Exercise: Web Crawler
+Implement web crawler that uses multiple threads to crawl a list of urls.
+
+```
+package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+type TodoList struct {
+    urls   map[string]bool
+    mux sync.Mutex
+}
+
+type Fetcher interface {
+    // Fetch returns the body of URL and
+    // a slice of URLs found on that page.
+    Fetch(url string) (body string, urls []string, err error)
+}
+
+// Crawl uses fetcher to recursively crawl
+// pages starting with url, to a maximum of depth.
+func Crawl(todo *TodoList, url string, depth int, fetcher Fetcher) {
+    // TODO: Fetch URLs in parallel.
+    // TODO: Don't fetch the same URL twice.
+    // This implementation doesn't do either:
+    if depth <= 0 {
+        return
+    }
+    //fmt.Println("lock mutex")
+    todo.mux.Lock()
+    loaded := todo.urls[url]
+    if !loaded {
+        todo.urls[url] = true
+    } else {
+        //fmt.Println("unlock mutex")
+        todo.mux.Unlock()
+        return
+    }
+    //fmt.Println("unlock mutex")
+    todo.mux.Unlock()
+    fmt.Println("fetching", url)
+    body, urls, err := fetcher.Fetch(url)
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    fmt.Printf("found: %s %q\n", url, body)
+    //fmt.Printf("%v\n", urls)
+    for _, u := range urls {
+        go Crawl(todo, u, depth-1, fetcher)
+    }
+    return
+}
+
+func main() {
+    todo := TodoList{urls: make(map[string]bool)};
+    fmt.Println("todo", todo)
+
+    go Crawl(&todo, "https://golang.org/", 4, fetcher)
+    time.Sleep(1000)
+}
+
+// fakeFetcher is Fetcher that returns canned results.
+type fakeFetcher map[string]*fakeResult
+
+type fakeResult struct {
+    body string
+    urls []string
+}
+
+func (f fakeFetcher) Fetch(url string) (string, []string, error) {
+    if res, ok := f[url]; ok {
+        return res.body, res.urls, nil
+    }
+    return "", nil, fmt.Errorf("not found: %s", url)
+}
+
+// fetcher is a populated fakeFetcher.
+var fetcher = fakeFetcher{
+    "https://golang.org/": &fakeResult{
+        "The Go Programming Language",
+        []string{
+            "https://golang.org/pkg/",
+            "https://golang.org/cmd/",
+        },
+    },
+    "https://golang.org/pkg/": &fakeResult{
+        "Packages",
+        []string{
+            "https://golang.org/",
+            "https://golang.org/cmd/",
+            "https://golang.org/pkg/fmt/",
+            "https://golang.org/pkg/os/",
+        },
+    },
+    "https://golang.org/pkg/fmt/": &fakeResult{
+        "Package fmt",
+        []string{
+            "https://golang.org/",
+            "https://golang.org/pkg/",
+        },
+    },
+    "https://golang.org/pkg/os/": &fakeResult{
+        "Package os",
+        []string{
+            "https://golang.org/",
+            "https://golang.org/pkg/",
+        },
+    },
+}
+```
