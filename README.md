@@ -9,7 +9,7 @@ package main
 import "fmt"
 
 func main() {
-    fmt.Printf("Hello, world\n")
+	fmt.Printf("Hello, world\n")
 }
 ```
 Update:
@@ -50,8 +50,8 @@ Go program consists of packages. Go program must start running in package `main`
 Import statements can be grouped into *Factored* import.
 ```
 import (
-    "fmt"
-    "math/rand"
+	"fmt"
+	"math/rand"
 )
 ```
 This is preferred format over:
@@ -69,7 +69,7 @@ Function declaration/definition
 An example of function:
 ```
 func add(x int, y int) int {
-    return x + y
+	return x + y
 }
 ```
 Notice the argument list, return type
@@ -88,16 +88,16 @@ x, y int
 Function can return multiple results (similar to returning tuple in Python)
 ```
 func swap(x, y string) (string, string) {
-    return y, x
+	return y, x
 }
 ```
 
 #### 2.7 Named return values
 ```
 func split(sum int) (x, y int) {
-    x = sum * 4 / 9
-    y = sum = x
-    return
+	x = sum * 4 / 9
+	y = sum = x
+	return
 }
 ```
 The `return` statement has no arguments, it is a *naked* return. It should only be used in short functions.
@@ -113,8 +113,8 @@ import "fmt"
 var c, python, java bool
 
 func main() {
-    var i int
-    fmt.Println(i, c, python, java)
+	var i int
+	fmt.Println(i, c, python, java)
 }
 ```
 
@@ -133,33 +133,33 @@ It seems `:=` defines variable on the stack.
 Following are built-in types of Go
 ```
 var (
-    IsBusy bool = true
-    IsFree bool = false
+	IsBusy bool = true
+	IsFree bool = false
 
-    Message string = "hello"
+	Message string = "hello"
 
-    counter int = 2
-    ascii int8 = 4
-    myvar int16 = 32767
-    myvar2 int32 = 65536
-    myint3 int64
-    myuint1 uint
-    myuint2 uint8
-    myuint3 uint16
-    myuint4 uint32
-    myuint5 uint64
-    myuintptr uintptr
+	counter int = 2
+	ascii int8 = 4
+	myvar int16 = 32767
+	myvar2 int32 = 65536
+	myint3 int64
+	myuint1 uint
+	myuint2 uint8
+	myuint3 uint16
+	myuint4 uint32
+	myuint5 uint64
+	myuintptr uintptr
 
-    y byte  // alias for uint8
+	y byte  // alias for uint8
 
-    x rune  // alias for int32
-            // represents a Unicode code point
+	x rune  // alias for int32
+			// represents a Unicode code point
 
-    varF32 float32
-    varF64 float64
+	varF32 float32
+	varF64 float64
 
-    varAA complex64
-    varBB complex128
+	varAA complex64
+	varBB complex128
 )
 ```
 
@@ -210,7 +210,7 @@ This module is done
 ```
 sum := 0
 for i := 0; i < 10; i++ {
-    sum += i
+	sum += i
 }
 ```
 #### 3.2 For continued
@@ -218,21 +218,21 @@ Initializer, post statement can be omitted
 ```
 sum := 1
 for ; sum < 1000; {
-    sum += sum
+	sum += sum
 }
 ```
 #### 3.3 For is Go's `while`
 Simicolons can also be dropped and it becomes `while`
 ```
 for sum < 1000 {
-    sum += sum
+	sum += sum
 }
 ```
 #### 3.4 Forever
 If condition is omitted, it becomes forever
 ```
 for {
-    // forever
+	// forever
 }
 ```
 
@@ -240,24 +240,24 @@ for {
 Parenthesis can be omitted, braces are needed
 ```
 if x < 0 {
-    fmt.Printf("x is less than 0")
+	fmt.Printf("x is less than 0")
 } else {
-    fmt.Printf("x is no less than 0")
+	fmt.Printf("x is no less than 0")
 }
 ```
 #### 3.6 `if` with short statement
 `if` can start with a short statment
 ```
 if v := input; v < limit {
-    fmt.Printf("input is less than limit")
+	fmt.Printf("input is less than limit")
 }
 ```
 #### 3.7 `if` and `else`
 ```
 if v := math.Power(x, n); v < lim {
-    return v
+	return v
 } else {
-    fmr.Printf("%g >= %g\n", v, lim)
+	fmr.Printf("%g >= %g\n", v, lim)
 }
 ```
 
@@ -296,13 +296,13 @@ Example:
 ```
 switch os := runtime.GOOS; os {
 case "darwin":
-    fmt.Println("OS X.")
+	fmt.Println("OS X.")
 case "linux":
-    fmt.Println("Linux.")
+	fmt.Println("Linux.")
 default:
-    // freebsd, openbsd,
-    // plan9, windows...
-    fmt.Printf("%s.", os)
+	// freebsd, openbsd,
+	// plan9, windows...
+	fmt.Printf("%s.", os)
 }
 ```
 
@@ -314,11 +314,11 @@ From top to bottom, stopping when a case succeeds.
 t := time.Now()
 switch {
 case t.Hour() < 12:
-    fmt.Println("Good morning!")
+	fmt.Println("Good morning!")
 case t.Hour() < 17:
-    fmt.Println("Good afternoon.")
+	fmt.Println("Good afternoon.")
 default:
-    fmt.Println("Good evening.")
+	fmt.Println("Good evening.")
 }
 ```
 
@@ -330,9 +330,9 @@ package main
 import "fmt"
 
 func main() {
-    defer fmt.Println("world")
+	defer fmt.Println("world")
 
-    fmt.Println("hello")
+	fmt.Println("hello")
 }
 ```
 
@@ -351,16 +351,16 @@ package main
 import "fmt"
 
 func main() {
-    i, j := 42, 2701
+	i, j := 42, 2701
 
-    p := &i         // point to i
-    fmt.Println(*p) // read i through the pointer
-    *p = 21         // set i through the pointer
-    fmt.Println(i)  // see the new value of i
+	p := &i         // point to i
+	fmt.Println(*p) // read i through the pointer
+	*p = 21         // set i through the pointer
+	fmt.Println(i)  // see the new value of i
 
-    p = &j         // point to j
-    *p = *p / 37   // divide j through the pointer
-    fmt.Println(j) // see the new value of j
+	p = &j         // point to j
+	*p = *p / 37   // divide j through the pointer
+	fmt.Println(j) // see the new value of j
 }
 ```
 #### 4.2 Structs
@@ -371,12 +371,12 @@ package main
 import "fmt"
 
 type Vertex struct {
-    X int
-    Y int
+	X int
+	Y int
 }
 
 func main() {
-    fmt.Println(Vertex{1, 2})
+	fmt.Println(Vertex{1, 2})
 }
 ```
 
@@ -392,18 +392,18 @@ package main
 import "fmt"
 
 type Vertex struct {
-    X, Y int
+	X, Y int
 }
 
 var (
-    v1 = Vertex{1, 2}  // has type Vertex
-    v2 = Vertex{X: 1}  // Y:0 is implicit
-    v3 = Vertex{}      // X:0 and Y:0
-    p  = &Vertex{1, 2} // has type *Vertex
+	v1 = Vertex{1, 2}  // has type Vertex
+	v2 = Vertex{X: 1}  // Y:0 is implicit
+	v3 = Vertex{}      // X:0 and Y:0
+	p  = &Vertex{1, 2} // has type *Vertex
 )
 
 func main() {
-    fmt.Println(v1, p, v2, v3)
+	fmt.Println(v1, p, v2, v3)
 }
 ```
 
@@ -415,14 +415,14 @@ package main
 import "fmt"
 
 func main() {
-    var a [2]string
-    a[0] = "Hello"
-    a[1] = "World"
-    fmt.Println(a[0], a[1])
-    fmt.Println(a)
+	var a [2]string
+	a[0] = "Hello"
+	a[1] = "World"
+	fmt.Println(a[0], a[1])
+	fmt.Println(a)
 
-    primes := [6]int{2, 3, 5, 7, 11, 13}
-    fmt.Println(primes)
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
 }
 ```
 
@@ -434,10 +434,10 @@ package main
 import "fmt"
 
 func main() {
-    primes := [6]int{2, 3, 5, 7, 11, 13}
+	primes := [6]int{2, 3, 5, 7, 11, 13}
 
-    var s []int = primes[1:4]
-    fmt.Println(s)
+	var s []int = primes[1:4]
+	fmt.Println(s)
 }
 ```
 
@@ -448,21 +448,21 @@ package main
 import "fmt"
 
 func main() {
-    names := [4]string{
-        "John",
-        "Paul",
-        "George",
-        "Ringo",
-    }
-    fmt.Println(names)
+	names := [4]string{
+		"John",
+		"Paul",
+		"George",
+		"Ringo",
+	}
+	fmt.Println(names)
 
-    a := names[0:2]
-    b := names[1:3]
-    fmt.Println(a, b)
+	a := names[0:2]
+	b := names[1:3]
+	fmt.Println(a, b)
 
-    b[0] = "XXX"
-    fmt.Println(a, b)
-    fmt.Println(names)
+	b[0] = "XXX"
+	fmt.Println(a, b)
+	fmt.Println(names)
 }
 ```
 
@@ -474,24 +474,24 @@ package main
 import "fmt"
 
 func main() {
-    q := []int{2, 3, 5, 7, 11, 13}
-    fmt.Println(q)
+	q := []int{2, 3, 5, 7, 11, 13}
+	fmt.Println(q)
 
-    r := []bool{true, false, true, true, false, true}
-    fmt.Println(r)
+	r := []bool{true, false, true, true, false, true}
+	fmt.Println(r)
 
-    s := []struct {
-        i int
-        b bool
-    }{
-        {2, true},
-        {3, false},
-        {5, true},
-        {7, true},
-        {11, false},
-        {13, true},
-    }
-    fmt.Println(s)
+	s := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
+	fmt.Println(s)
 }
 ```
 
@@ -517,24 +517,24 @@ package main
 import "fmt"
 
 func main() {
-    s := []int{2, 3, 5, 7, 11, 13}
-    printSlice(s)
+	s := []int{2, 3, 5, 7, 11, 13}
+	printSlice(s)
 
-    // Slice the slice to give it zero length.
-    s = s[:0]
-    printSlice(s)
+	// Slice the slice to give it zero length.
+	s = s[:0]
+	printSlice(s)
 
-    // Extend its length.
-    s = s[:4]
-    printSlice(s)
+	// Extend its length.
+	s = s[:4]
+	printSlice(s)
 
-    // Drop its first two values.
-    s = s[2:]
-    printSlice(s)
+	// Drop its first two values.
+	s = s[2:]
+	printSlice(s)
 }
 
 func printSlice(s []int) {
-    fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
 }
 ```
 
@@ -546,11 +546,11 @@ package main
 import "fmt"
 
 func main() {
-    var s []int
-    fmt.Println(s, len(s), cap(s))
-    if s == nil {
-        fmt.Println("nil!")
-    }
+	var s []int
+	fmt.Println(s, len(s), cap(s))
+	if s == nil {
+		fmt.Println("nil!")
+	}
 }
 ```
 
@@ -562,22 +562,22 @@ package main
 import "fmt"
 
 func main() {
-    a := make([]int, 5)
-    printSlice("a", a)
+	a := make([]int, 5)
+	printSlice("a", a)
 
-    b := make([]int, 0, 5)
-    printSlice("b", b)
+	b := make([]int, 0, 5)
+	printSlice("b", b)
 
-    c := b[:2]
-    printSlice("c", c)
+	c := b[:2]
+	printSlice("c", c)
 
-    d := c[2:5]
-    printSlice("d", d)
+	d := c[2:5]
+	printSlice("d", d)
 }
 
 func printSlice(s string, x []int) {
-    fmt.Printf("%s len=%d cap=%d %v\n",
-        s, len(x), cap(x), x)
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
 }
 ```
 
@@ -587,28 +587,28 @@ Slice can contain any type, including other slices
 package main
 
 import (
-    "fmt"
-    "strings"
+	"fmt"
+	"strings"
 )
 
 func main() {
-    // Create a tic-tac-toe board.
-    board := [][]string{
-        []string{"_", "_", "_"},
-        []string{"_", "_", "_"},
-        []string{"_", "_", "_"},
-    }
+	// Create a tic-tac-toe board.
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
 
-    // The players take turns.
-    board[0][0] = "X"
-    board[2][2] = "O"
-    board[1][2] = "X"
-    board[1][0] = "O"
-    board[0][2] = "X"
+	// The players take turns.
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
 
-    for i := 0; i < len(board); i++ {
-        fmt.Printf("%s\n", strings.Join(board[i], " "))
-    }
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
 }
 ```
 
@@ -631,16 +631,16 @@ import "fmt"
 var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
 
 func main() {
-    for i, v := range pow {
-        fmt.Printf("2**%d = %d\n", i, v)
-    }
+	for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
 }
 ```
 #### 4.17 Range continued
 You can skip index by using variable name `_`.
 ```
 for _, value := range pow {
-    fmt.Printf("%d\n", value)
+	fmt.Printf("%d\n", value)
 }
 ```
 
@@ -651,20 +651,20 @@ package main
 import "golang.org/x/tour/pic"
 
 func Pic(dx, dy int) [][]uint8 {
-    var pic [][]uint8;
-    for i := 0; i < dy; i++ {
-        var row []uint8;
-        for j := 0; j < dx; j++ {
-            pixel := j % 4
-            row = append(row, uint8(pixel))
-        }
-        pic = append(pic, row)
-    }
-    return pic
+	var pic [][]uint8;
+	for i := 0; i < dy; i++ {
+		var row []uint8;
+		for j := 0; j < dx; j++ {
+			pixel := j % 4
+			row = append(row, uint8(pixel))
+		}
+		pic = append(pic, row)
+	}
+	return pic
 }
 
 func main() {
-    pic.Show(Pic)
+	pic.Show(Pic)
 }
 ```
 
@@ -676,17 +676,17 @@ package main
 import "fmt"
 
 type Vertex struct {
-    Lat, Long float64
+	Lat, Long float64
 }
 
 var m map[string]Vertex
 
 func main() {
-    m = make(map[string]Vertex)
-    m["Bell Labs"] = Vertex{
-        40.68433, -74.39967,
-    }
-    fmt.Println(m["Bell Labs"])
+	m = make(map[string]Vertex)
+	m["Bell Labs"] = Vertex{
+		40.68433, -74.39967,
+	}
+	fmt.Println(m["Bell Labs"])
 }
 ```
 
@@ -701,27 +701,27 @@ package main
 import "fmt"
 
 type Vertex struct {
-    Lat, Long float64
+	Lat, Long float64
 }
 
 var (
-    m = map[string]Vertex{
-        "Bell Labs": Vertex{
-            40.68433, -74.39967,
-        },
-        "Google": { // type name can be omited
-            37.42202, -122.08408,
-        },
-    }
-    m2 = map[int]string{
-        5: "Five",
-        6: "Six",
-    }
+	m = map[string]Vertex{
+		"Bell Labs": Vertex{
+			40.68433, -74.39967,
+		},
+		"Google": { // type name can be omited
+			37.42202, -122.08408,
+		},
+	}
+	m2 = map[int]string{
+		5: "Five",
+		6: "Six",
+	}
 )
 
 func main() {
-    fmt.Println(m)
-    fmt.Println(m2)
+	fmt.Println(m)
+	fmt.Println(m2)
 }
 ```
 
@@ -749,19 +749,19 @@ package main
 import "fmt"
 
 func main() {
-    m := make(map[string]int)
+	m := make(map[string]int)
 
-    m["Answer"] = 42
-    fmt.Println("The value:", m["Answer"])
+	m["Answer"] = 42
+	fmt.Println("The value:", m["Answer"])
 
-    m["Answer"] = 48
-    fmt.Println("The value:", m["Answer"])
+	m["Answer"] = 48
+	fmt.Println("The value:", m["Answer"])
 
-    delete(m, "Answer")
-    fmt.Println("The value:", m["Answer"])
+	delete(m, "Answer")
+	fmt.Println("The value:", m["Answer"])
 
-    v, ok := m["Answer"]
-    fmt.Println("The value:", v, "Present?", ok)
+	v, ok := m["Answer"]
+	fmt.Println("The value:", v, "Present?", ok)
 }
 ```
 
@@ -770,20 +770,20 @@ func main() {
 package main
 
 import (
-    "strings"
-    "golang.org/x/tour/wc"
+	"strings"
+	"golang.org/x/tour/wc"
 )
 
 func WordCount(s string) map[string]int {
-    var wc = make(map[string]int)
-    for _, w := range strings.Fields(s) {
-        wc[w] = int(wc[w]) + 1
-    }
-    return wc
+	var wc = make(map[string]int)
+	for _, w := range strings.Fields(s) {
+		wc[w] = int(wc[w]) + 1
+	}
+	return wc
 }
 
 func main() {
-    wc.Test(WordCount)
+	wc.Test(WordCount)
 }
 ```
 
@@ -811,19 +811,19 @@ package main
 import "fmt"
 
 func main() {
-    m := make(map[string]int)
+	m := make(map[string]int)
 
-    m["Answer"] = 42
-    fmt.Println("The value:", m["Answer"])
+	m["Answer"] = 42
+	fmt.Println("The value:", m["Answer"])
 
-    m["Answer"] = 48
-    fmt.Println("The value:", m["Answer"])
+	m["Answer"] = 48
+	fmt.Println("The value:", m["Answer"])
 
-    delete(m, "Answer")
-    fmt.Println("The value:", m["Answer"])
+	delete(m, "Answer")
+	fmt.Println("The value:", m["Answer"])
 
-    v, ok := m["Answer"]
-    fmt.Println("The value:", v, "Present?", ok)
+	v, ok := m["Answer"]
+	fmt.Println("The value:", v, "Present?", ok)
 }
 ```
 
@@ -833,22 +833,22 @@ Function values are like function objects in JavaScript.
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 func compute(fn func(float64, float64) float64) float64 {
-    return fn(3, 4)
+	return fn(3, 4)
 }
 
 func main() {
-    hypot := func(x, y float64) float64 {
-        return math.Sqrt(x*x + y*y)
-    }
-    fmt.Println(hypot(5, 12))
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
 
-    fmt.Println(compute(hypot))
-    fmt.Println(compute(math.Pow))
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
 }
 ```
 
@@ -860,21 +860,21 @@ package main
 import "fmt"
 
 func adder() func(int) int {
-    sum := 0
-    return func(x int) int {
-        sum += x
-        return sum
-    }
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
 }
 
 func main() {
-    pos, neg := adder(), adder()
-    for i := 0; i < 10; i++ {
-        fmt.Println(
-            pos(i),
-            neg(-2*i),
-        )
-    }
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(
+			pos(i),
+			neg(-2*i),
+		)
+	}
 }
 ```
 
@@ -888,26 +888,28 @@ import "fmt"
 // fibonacci is a function that returns
 // a function that returns an int.
 func fibonacci() func(x int) int {
-    known := []int{0, 1}
-    return func(x int) int {
-        for i := len(known); i <= x; i++ {
-            v := known[i-1] + known[i-2];
-            known = append(known, v)
-        }
-        return known[x]
-    }
+	known := []int{0, 1}
+	return func(x int) int {
+		for i := len(known); i <= x; i++ {
+			v := known[i-1] + known[i-2];
+			known = append(known, v)
+		}
+		return known[x]
+	}
 }
 
 func main() {
-    f := fibonacci()
-    for i := 0; i < 10; i++ {
-        fmt.Println(f(i))
-    }
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f(i))
+	}
 }
 ```
 #### 4.27 Congratulations
 
-## Methods and interfaces
+## Part III Methods and interfaces
+### 5 Methods and interfaces
+#### 5.1 methods
 Go doesn't have classes but one can define methods on types.
 
 A method is a function with a special *receiver* argument.
@@ -915,88 +917,90 @@ A method is a function with a special *receiver* argument.
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 type Vertex struct {
-    X, Y float64
+	X, Y float64
 }
 
 func (v Vertex) Abs() float64 {
-    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
 func main() {
-    v := Vertex{3, 4}
-    fmt.Println(v.Abs())
+	v := Vertex{3, 4}
+	fmt.Println(v.Abs())
 }
 ```
 
-#### methods are functions
+#### 5.2 Methods are functions
 A method is just a function with a receiver argument
 ```
 func main() {
-    v := Vertex{3, 4}
-    fmt.Println(Abs(v))
+	v := Vertex{3, 4}
+	fmt.Println(Abs(v))
 }
 ```
 
-#### Method on non-struct types
+#### 5.3 Methods continued
 Method can be defined on non-struct types too
 ```
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 type MyFloat float64
 
 func (f MyFloat) Abs() float64 {
-    if f < 0 {
-        return float64(-f)
-    }
-    return float64(f)
+	if f < 0 {
+		return float64(-f)
+	}
+	return float64(f)
 }
 
 func main() {
-    f := MyFloat(-math.Sqrt2)
-    fmt.Println(f.Abs())
+	f := MyFloat(-math.Sqrt2)
+	fmt.Println(f.Abs())
 }
 ```
 
-#### pointer receivers
+#### 5.4 pointer receivers
 ```
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 type Vertex struct {
-    X, Y float64
+	X, Y float64
 }
 
 func (v Vertex) Abs() float64 { // receiver (v Vertex)
-    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 
 func (v *Vertex) Scale(f float64) { // receiver (v *Vertex)
-    v.X = v.X * f
-    v.Y = v.Y * f
+	v.X = v.X * f
+	v.Y = v.Y * f
 }
 
 func main() {
-    v := Vertex{3, 4}
-    v.Scale(10)
-    fmt.Println(v.Abs())
+	v := Vertex{3, 4}
+	v.Scale(10)
+	fmt.Println(v.Abs())
 }
 ```
+#### 5.5 Pointers and functions
 
-#### Methods and pointer indirection
+#### 5.6 Methods and pointer indirection
+#### 5.7 Methods and pointer indirection (2)
 Pointer argument only accepts pointer, pointer receiver can take both value or pointer.
 ```
 package main
@@ -1004,33 +1008,33 @@ package main
 import "fmt"
 
 type Vertex struct {
-    X, Y float64
+	X, Y float64
 }
 
 func (v *Vertex) Scale(f float64) {
-    v.X = v.X * f
-    v.Y = v.Y * f
+	v.X = v.X * f
+	v.Y = v.Y * f
 }
 
 func ScaleFunc(v *Vertex, f float64) {
-    v.X = v.X * f
-    v.Y = v.Y * f
+	v.X = v.X * f
+	v.Y = v.Y * f
 }
 
 func main() {
-    v := Vertex{3, 4}
-    v.Scale(2)
-    ScaleFunc(&v, 10)
+	v := Vertex{3, 4}
+	v.Scale(2)
+	ScaleFunc(&v, 10)
 
-    p := &Vertex{4, 3}
-    p.Scale(3)
-    ScaleFunc(p, 8)
+	p := &Vertex{4, 3}
+	p.Scale(3)
+	ScaleFunc(p, 8)
 
-    fmt.Println(v, p)
+	fmt.Println(v, p)
 }
 ```
 
-#### Choosing a value or pointer receiver
+#### 5.8 Choosing a value or pointer receiver
 There are two reasons to use a pointer receiver:
 
 1. You can modify the passed in object
@@ -1038,54 +1042,54 @@ There are two reasons to use a pointer receiver:
 
 Generally speaking, all methods on a given type should have either value or pointer receivers but not a mixture of both.
 
-### Interface
+#### 5.9 Interfaces
 Interface defines a set of method signatures.
 ```
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 type Abser interface {
-    Abs() float64
+	Abs() float64
 }
 
 func main() {
-    var a Abser
-    f := MyFloat(-math.Sqrt2)
-    v := Vertex{3, 4}
+	var a Abser
+	f := MyFloat(-math.Sqrt2)
+	v := Vertex{3, 4}
 
-    a = f  // a MyFloat implements Abser
-    a = &v // a *Vertex implements Abser
+	a = f  // a MyFloat implements Abser
+	a = &v // a *Vertex implements Abser
 
-    // In the following line, v is a Vertex (not *Vertex)
-    // and does NOT implement Abser.
-    a = v
+	// In the following line, v is a Vertex (not *Vertex)
+	// and does NOT implement Abser.
+	a = v
 
-    fmt.Println(a.Abs())
+	fmt.Println(a.Abs())
 }
 
 type MyFloat float64
 
 func (f MyFloat) Abs() float64 {
-    if f < 0 {
-        return float64(-f)
-    }
-    return float64(f)
+	if f < 0 {
+		return float64(-f)
+	}
+	return float64(f)
 }
 
 type Vertex struct {
-    X, Y float64
+	X, Y float64
 }
 
 func (v *Vertex) Abs() float64 {
-    return math.Sqrt(v.X*v.X + v.Y*v.Y)
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
 }
 ```
 
-#### Interfaces are implemented implicitly
+#### 5.10 Interfaces are implemented implicitly
 We don't need to use `implements` keyword to declare that.
 ```
 package main
@@ -1093,71 +1097,71 @@ package main
 import "fmt"
 
 type I interface {
-    M()
+	M()
 }
 
 type T struct {
-    S string
+	S string
 }
 
 // This method means type T implements the interface I,
 // but we don't need to explicitly declare that it does so.
 func (t T) M() {
-    fmt.Println(t.S)
+	fmt.Println(t.S)
 }
 
 func main() {
-    var i I = T{"hello"}
-    i.M()
+	var i I = T{"hello"}
+	i.M()
 }
 ```
 
-#### Interface values
+#### 5.11 Interface values
 Interface values can be though of as a tuple of a value and a concrete type: `(value, type)`
 ```
 package main
 
 import (
-    "fmt"
-    "math"
+	"fmt"
+	"math"
 )
 
 type I interface {
-    M()
+	M()
 }
 
 type T struct {
-    S string
+	S string
 }
 
 func (t *T) M() {
-    fmt.Println(t.S)
+	fmt.Println(t.S)
 }
 
 type F float64
 
 func (f F) M() {
-    fmt.Println(f)
+	fmt.Println(f)
 }
 
 func main() {
-    var i I
+	var i I
 
-    i = &T{"Hello"}
-    describe(i)
-    i.M()
+	i = &T{"Hello"}
+	describe(i)
+	i.M()
 
-    i = F(math.Pi)
-    describe(i)
-    i.M()
+	i = F(math.Pi)
+	describe(i)
+	i.M()
 }
 
 func describe(i I) {
-    fmt.Printf("(%v, %T)\n", i, i)
+	fmt.Printf("(%v, %T)\n", i, i)
 }
 ```
 
-#### Interface values with `nil` underlying values
+#### 5.12 Interface values with `nil` underlying values
 Interface value may hold a concrete value which is `nil`.
 ```
 package main
@@ -1165,43 +1169,43 @@ package main
 import "fmt"
 
 type I interface {
-    M()
+	M()
 }
 
 type T struct {
-    S string
+	S string
 }
 
 func (t *T) M() {
-    if t == nil {
-        fmt.Println("<nil>")
-        return
-    }
-    fmt.Println(t.S)
+	if t == nil {
+		fmt.Println("<nil>")
+		return
+	}
+	fmt.Println(t.S)
 }
 
 func main() {
-    var i I
+	var i I
 
-    var t *T
-    i = t
-    describe(i)
-    i.M()
+	var t *T
+	i = t
+	describe(i)
+	i.M()
 
-    i = &T{"hello"}
-    describe(i)
-    i.M()
+	i = &T{"hello"}
+	describe(i)
+	i.M()
 }
 
 func describe(i I) {
-    fmt.Printf("(%v, %T)\n", i, i)
+	fmt.Printf("(%v, %T)\n", i, i)
 }
 ```
 
-#### `nil` interface values
+#### 5.13 `nil` interface values
 A `nil` interface value holds neither value nor concrete type.
 
-#### The empty interface
+#### 5.14 The empty interface
 Interface without any methods is *empty interface*.
 ```
 package main
@@ -1209,40 +1213,40 @@ package main
 import "fmt"
 
 type I interface {
-    M()
+	M()
 }
 
 type T struct {
-    S string
+	S string
 }
 
 func (t *T) M() {
-    if t == nil {
-        fmt.Println("<nil>")
-        return
-    }
-    fmt.Println(t.S)
+	if t == nil {
+		fmt.Println("<nil>")
+		return
+	}
+	fmt.Println(t.S)
 }
 
 func main() {
-    var i I
+	var i I
 
-    var t *T
-    i = t
-    describe(i)
-    i.M()
+	var t *T
+	i = t
+	describe(i)
+	i.M()
 
-    i = &T{"hello"}
-    describe(i)
-    i.M()
+	i = &T{"hello"}
+	describe(i)
+	i.M()
 }
 
 func describe(i I) {
-    fmt.Printf("(%v, %T)\n", i, i)
+	fmt.Printf("(%v, %T)\n", i, i)
 }
 ```
 
-### Type assertions
+#### 5.15 Type assertions
 A type assertion provides access to an interface value's underlying concrete value.
 ```
 package main
@@ -1250,23 +1254,23 @@ package main
 import "fmt"
 
 func main() {
-    var i interface{} = "hello"
+	var i interface{} = "hello"
 
-    s := i.(string)
-    fmt.Println(s)
+	s := i.(string)
+	fmt.Println(s)
 
-    s, ok := i.(string)
-    fmt.Println(s, ok)
+	s, ok := i.(string)
+	fmt.Println(s, ok)
 
-    f, ok := i.(float64)
-    fmt.Println(f, ok)
+	f, ok := i.(float64)
+	fmt.Println(f, ok)
 
-    f = i.(float64) // panic
-    fmt.Println(f)
+	f = i.(float64) // panic
+	fmt.Println(f)
 }
 ```
 
-#### Type switches
+#### 5.16 Type switches
 A type switch is a construct that permits erveral type asertions in series.
 ```
 package main
@@ -1274,24 +1278,24 @@ package main
 import "fmt"
 
 func do(i interface{}) {
-    switch v := i.(type) {
-    case int:
-        fmt.Printf("Twice %v is %v\n", v, v*2)
-    case string:
-        fmt.Printf("%q is %v bytes long\n", v, len(v))
-    default:
-        fmt.Printf("I don't know about type %T!\n", v)
-    }
+	switch v := i.(type) {
+	case int:
+		fmt.Printf("Twice %v is %v\n", v, v*2)
+	case string:
+		fmt.Printf("%q is %v bytes long\n", v, len(v))
+	default:
+		fmt.Printf("I don't know about type %T!\n", v)
+	}
 }
 
 func main() {
-    do(21)
-    do("hello")
-    do(true)
+	do(21)
+	do("hello")
+	do(true)
 }
 ```
 
-### Stringers
+#### 5.17 Stringers
 Stringer interface defines one method `String()`. A type that implements this interface provides a way to convert its values into strings.
 ```
 package main
@@ -1299,22 +1303,22 @@ package main
 import "fmt"
 
 type Person struct {
-    Name string
-    Age  int
+	Name string
+	Age  int
 }
 
 func (p Person) String() string {
-    return fmt.Sprintf("%v (%v years)", p.Name, p.Age)
+	return fmt.Sprintf("%v (%v years)", p.Name, p.Age)
 }
 
 func main() {
-    a := Person{"Arthur Dent", 42}
-    z := Person{"Zaphod Beeblebrox", 9001}
-    fmt.Println(a, z)
+	a := Person{"Arthur Dent", 42}
+	z := Person{"Zaphod Beeblebrox", 9001}
+	fmt.Println(a, z)
 }
 ```
 
-#### Exercise: Stringers
+#### 5.18 Exercise: Stringers
 Make the IPAddr type implement fmt.Stringer to print the address as a dotted quad.
 
 For instance, `IPAddr{1, 2, 3, 4}` should print as "`1.2.3.4`".
@@ -1323,8 +1327,8 @@ For instance, `IPAddr{1, 2, 3, 4}` should print as "`1.2.3.4`".
 package main
 
 import (
-    "fmt"
-    "strings"
+	"fmt"
+	"strings"
 )
 
 
@@ -1333,28 +1337,28 @@ type IPAddr [4]byte
 // TODO: Add a "String() string" method to IPAddr.
 
 func (ip IPAddr) String() string {
-    return fmt.Sprintf("%v.%v.%v.%v", ip[0], ip[1], ip[2], ip[3])
+	return fmt.Sprintf("%v.%v.%v.%v", ip[0], ip[1], ip[2], ip[3])
 }
 
 func main() {
-    ss := []string{string('1'),string('2'),string('3'),string('4')}
-    fmt.Println(strings.Join(ss, "."))
+	ss := []string{string('1'),string('2'),string('3'),string('4')}
+	fmt.Println(strings.Join(ss, "."))
 
-    hosts := map[string]IPAddr{
-        "loopback":  {127, 0, 0, 1},
-        "googleDNS": {8, 8, 8, 8},
-    }
-    for name, ip := range hosts {
-        fmt.Printf("%v: %v\n", name, ip)
-    }
+	hosts := map[string]IPAddr{
+		"loopback":  {127, 0, 0, 1},
+		"googleDNS": {8, 8, 8, 8},
+	}
+	for name, ip := range hosts {
+		fmt.Printf("%v: %v\n", name, ip)
+	}
 }
 ```
 
-### Errors
+#### 5.19 Errors
 Error Type is a built-in interface
 ```
 type error interface {
-    Error() string
+	Error() string
 }
 ```
 `nil` value of error type indicate success, non-nil error denotes failure.
@@ -1362,65 +1366,65 @@ type error interface {
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
 type MyError struct {
-    When time.Time
-    What string
+	When time.Time
+	What string
 }
 
 func (e *MyError) Error() string {
-    return fmt.Sprintf("at %v, %s",
-        e.When, e.What)
+	return fmt.Sprintf("at %v, %s",
+		e.When, e.What)
 }
 
 func run() error {
-    return &MyError{
-        time.Now(),
-        "it didn't work",
-    }
+	return &MyError{
+		time.Now(),
+		"it didn't work",
+	}
 }
 
 func main() {
-    if err := run(); err != nil {
-        fmt.Println(err)
-    }
+	if err := run(); err != nil {
+		fmt.Println(err)
+	}
 }
 ```
 
-#### Exercise: Errors
+#### 5.20 Exercise: Errors
 ```
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
 type ErrNegativeSqrt float64
 
 func (e ErrNegativeSqrt) Error() string {
-    v := float64(e)
-    return fmt.Sprintf("cannot Sqrt negative number: %v", v)
+	v := float64(e)
+	return fmt.Sprintf("cannot Sqrt negative number: %v", v)
 }
 
 func Sqrt(x float64) (float64, error) {
-    v := x
-    if x < 0 {
-        return 0, ErrNegativeSqrt(v)
-        //return 2, nil
-    }
-    return 0, nil
+	v := x
+	if x < 0 {
+		return 0, ErrNegativeSqrt(v)
+		//return 2, nil
+	}
+	return 0, nil
 }
 
 func main() {
-    fmt.Println(Sqrt(2))
-    fmt.Println(Sqrt(-2))
+	fmt.Println(Sqrt(2))
+	fmt.Println(Sqrt(-2))
 }
 ```
 
-### Readers
+#### 5.21 Readers
 The `io` package defines `io.Reader` interface, which as a `Read` method:
 ```
 func (T) Read(b []byte) (n int, err error)
@@ -1430,27 +1434,27 @@ Example:
 package main
 
 import (
-    "fmt"
-    "io"
-    "strings"
+	"fmt"
+	"io"
+	"strings"
 )
 
 func main() {
-    r := strings.NewReader("Hello, Reader!")
+	r := strings.NewReader("Hello, Reader!")
 
-    b := make([]byte, 8)
-    for {
-        n, err := r.Read(b)
-        fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
-        fmt.Printf("b[:n] = %q\n", b[:n])
-        if err == io.EOF {
-            break
-        }
-    }
+	b := make([]byte, 8)
+	for {
+		n, err := r.Read(b)
+		fmt.Printf("n = %v err = %v b = %v\n", n, err, b)
+		fmt.Printf("b[:n] = %q\n", b[:n])
+		if err == io.EOF {
+			break
+		}
+	}
 }
 ```
 
-#### Exercise: Readers
+#### 5.22 Exercise: Readers
 
 Implement a `Reader` type that emits an infinite stream of ASCII character 'A'
 ```
@@ -1461,63 +1465,63 @@ import "golang.org/x/tour/reader"
 type MyReader struct{}
 
 func (r MyReader) Read(b []byte) (int, error) {
-    b[0] = byte('A')
-    return 1, nil
+	b[0] = byte('A')
+	return 1, nil
 }
 
 func main() {
-    reader.Validate(MyReader{})
+	reader.Validate(MyReader{})
 }
 ```
-#### Exercise: rot13Reader
+#### 5.23 Exercise: rot13Reader
 Define a new `Reader` by making use of another one
 ```
 package main
 
 import (
-    "io"
-    "os"
-    "strings"
+	"io"
+	"os"
+	"strings"
 )
 
 type rot13Reader struct {
-    r io.Reader
+	r io.Reader
 }
 
 func (r13 rot13Reader) Read(b []byte) (n int, e error) {
-    return r13.r.Read(b)
+	return r13.r.Read(b)
 }
 
 func main() {
-    s := strings.NewReader("Lbh penpxrq gur pbqr!")
-    r := rot13Reader{s}
-    io.Copy(os.Stdout, &r)
+	s := strings.NewReader("Lbh penpxrq gur pbqr!")
+	r := rot13Reader{s}
+	io.Copy(os.Stdout, &r)
 }
 ```
-### Images
+#### 5.24 Images
 Package `image` defines interface `Image`
 
 ```
 package main
 
 import (
-    "io"
-    "os"
-    "strings"
+	"io"
+	"os"
+	"strings"
 )
 
 type rot13Reader struct {
-    r io.Reader
+	r io.Reader
 }
 
 func (r13 rot13Reader) Read(b []byte) (n int, e error) {
-    return r13.r.Read(b)
+	return r13.r.Read(b)
 }
 
 func main() {
-    s := strings.NewReader("Lbh penpxrq gur pbqr!")
-    r := rot13Reader{s}
-    io.Copy(os.Stdout, &r)
+	s := strings.NewReader("Lbh penpxrq gur pbqr!")
+	r := rot13Reader{s}
+	io.Copy(os.Stdout, &r)
 }
 ```
 
@@ -1526,59 +1530,62 @@ Example:
 package main
 
 import (
-    "fmt"
-    "image"
+	"fmt"
+	"image"
 )
 
 func main() {
-    m := image.NewRGBA(image.Rect(0, 0, 100, 100))
-    fmt.Println(m.Bounds())
-    fmt.Println(m.At(0, 0).RGBA())
+	m := image.NewRGBA(image.Rect(0, 0, 100, 100))
+	fmt.Println(m.Bounds())
+	fmt.Println(m.At(0, 0).RGBA())
 }
 ```
 
-### Exercise: Images
+#### 5.25 Exercise: Images
 Defines your own image type that implements the `Image` interface
 ```
 package main
 
 import (
-    "image"
-    "image/color"
-    "golang.org/x/tour/pic"
+	"image"
+	"image/color"
+	"golang.org/x/tour/pic"
 )
 
 type Image struct{
-    x, y, width, height int
+	x, y, width, height int
 }
 /*
 type Image interface {
-    ColorModel() color.Model
-    Bounds() Rectangle
-    At(x, y int) color.Color
+	ColorModel() color.Model
+	Bounds() Rectangle
+	At(x, y int) color.Color
 }
 */
 
 func (img Image) ColorModel() color.Model {
-    return color.RGBAModel
+	return color.RGBAModel
 }
 
 func (img Image) Bounds() image.Rectangle {
-    return image.Rect(img.x, img.y, img.width, img.height)
+	return image.Rect(img.x, img.y, img.width, img.height)
 }
 
 func (img Image) At(x, y int) color.Color {
-    return color.RGBA{0, 0, 255, 255}
+	return color.RGBA{0, 0, 255, 255}
 }
 
 func main() {
-    m := Image{0, 0, 400, 300}
-    pic.ShowImage(m)
+	m := Image{0, 0, 400, 300}
+	pic.ShowImage(m)
 }
 ```
 
-## Concurrency
-### Goroutines
+#### 5.26 Congratulations!
+
+## Part IV Concurrency
+### 6 Concurrency
+#### 6.1 Goroutines
 In Go, the term *goroutine* refers to a lightweight thread. Just use keyword `go` to start a new goroutine
 
 Example:
@@ -1586,24 +1593,24 @@ Example:
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
 func say(s string) {
-    for i := 0; i < 3; i++ {
-        time.Sleep(100 * time.Millisecond)
-        fmt.Println(s)
-    }
+	for i := 0; i < 3; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
+	}
 }
 
 func main() {
-    go say("world")
-    say("hello")
+	go say("world")
+	say("hello")
 }
 ```
 
-### Channels
+#### 6.2 Channels
 Channels are typed conduit for communications between two goroutines.
 
 ```
@@ -1612,27 +1619,27 @@ package main
 import "fmt"
 
 func sum(s []int, c chan int) {
-    sum := 0
-    for _, v := range s {
-        sum += v
-    }
-    c <- sum // send sum to c
+	sum := 0
+	for _, v := range s {
+		sum += v
+	}
+	c <- sum // send sum to c
 }
 
 func main() {
-    s := []int{7, 2, 8, -9, 4, 0}
+	s := []int{7, 2, 8, -9, 4, 0}
 
-    c := make(chan int)
-    go sum(s[:len(s)/2], c)
-    go sum(s[len(s)/2:], c)
-    x, y := <-c, <-c // receive from c
+	c := make(chan int)
+	go sum(s[:len(s)/2], c)
+	go sum(s[len(s)/2:], c)
+	x, y := <-c, <-c // receive from c
 
-    fmt.Println(x, y, x+y)
+	fmt.Println(x, y, x+y)
 }
 ```
 Two goroutines were started, each computes summary of half of the slice. Then results are sent back to main thread using channel.
 
-### Buffered Channels
+#### 6.3 Buffered Channels
 Channels can be buffered, buffer size can be specified when being created
 ```
 ch := make(chan int, 100)
@@ -1644,19 +1651,19 @@ package main
 import "fmt"
 
 func main() {
-    ch := make(chan int, 2)
-    ch <- 1
-    ch <- 3
-    fmt.Println(<-ch)
-    fmt.Println(<-ch)
-    ch <- 5
-    ch <- 2
-    fmt.Println(<-ch)
-    fmt.Println(<-ch)
+	ch := make(chan int, 2)
+	ch <- 1
+	ch <- 3
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+	ch <- 5
+	ch <- 2
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
 }
 ```
 
-### Range and Close
+#### 6.4 Range and Close
 A sender can close the channel to indicate there's no more values to be sent. Receivers can test if a channel is closed, but should never close a channel.
 
 Examples:
@@ -1664,28 +1671,28 @@ Examples:
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
 func fibonacci(n int, c chan int) {
-    x, y := 0, 1
-    for i := 0; i < n; i++ {
-        c <- x
-        x, y = y, x+y
-    }
-    close(c)
+	x, y := 0, 1
+	for i := 0; i < n; i++ {
+		c <- x
+		x, y = y, x+y
+	}
+	close(c)
 }
 
 func main() {
-    c := make(chan int, 10)
-    go fibonacci(cap(c), c)
-    for i := range c {
-        fmt.Println(i)
-    }
+	c := make(chan int, 10)
+	go fibonacci(cap(c), c)
+	for i := range c {
+		fmt.Println(i)
+	}
 }
 ```
 
-### Select
+#### 6.5 Select
 `select` statement lets a goroutine to wait on multiple channels
 Example:
 ```
@@ -1694,67 +1701,68 @@ package main
 import "fmt"
 
 func fibonacci(c, quit chan int) {
-    x, y := 0, 1
-    for {
-        select {
-        case c <- x:
-            x, y = y, x+y
-        case <-quit:
-            fmt.Println("quit")
-            return
-        }
-    }
+	x, y := 0, 1
+	for {
+		select {
+		case c <- x:
+			x, y = y, x+y
+		case <-quit:
+			fmt.Println("quit")
+			return
+		}
+	}
 }
 
 func main() {
-    c := make(chan int)
-    quit := make(chan int)
-    go func() {
-        for i := 0; i < 10; i++ {
-            fmt.Println(<-c)
-        }
-        quit <- 0
-    }()
-    fibonacci(c, quit)
+	c := make(chan int)
+	quit := make(chan int)
+	go func() {
+		for i := 0; i < 10; i++ {
+			fmt.Println(<-c)
+		}
+		quit <- 0
+	}()
+	fibonacci(c, quit)
 }
 ```
 
-### Default Selection
+#### 6.6 Default Selection
 `default` case is run when there's no other case is ready, it can be used to try a send or receive without blocking.
 Example:
 ```
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
 func main() {
-    tick := time.Tick(100 * time.Millisecond)
-    boom := time.After(500 * time.Millisecond)
-    for {
-        select {
-        case <-tick:
-            fmt.Println("tick.")
-        case <-boom:
-            fmt.Println("BOOM!")
-            return
-        default:
-            fmt.Println("    .")
-            time.Sleep(50 * time.Millisecond)
-        }
-    }
+	tick := time.Tick(100 * time.Millisecond)
+	boom := time.After(500 * time.Millisecond)
+	for {
+		select {
+		case <-tick:
+			fmt.Println("tick.")
+		case <-boom:
+			fmt.Println("BOOM!")
+			return
+		default:
+			fmt.Println("    .")
+			time.Sleep(50 * time.Millisecond)
+		}
+	}
 }
 ```
 
-### Exercise: Equivalent Binary Trees
+#### 6.7 Exercise: Equivalent Binary Trees
+#### 6.8 Exercise: Equivalent Binary Trees
 Use predefined tree structure
 ```
 type Tree struct {
-    Left *Tree
-    Value int
-    Right *Tree
+	Left *Tree
+	Value int
+	Right *Tree
 }
 ```
 First, implement a `Walk` function that traverse tree and emits its value
@@ -1762,28 +1770,28 @@ First, implement a `Walk` function that traverse tree and emits its value
 package main
 
 import (
-    "fmt"
-    "golang.org/x/tour/tree"
+	"fmt"
+	"golang.org/x/tour/tree"
 )
 
 func Walk(t *tree.Tree, ch chan int) {
-    if t.Left != nil {
-        Walk(t.Left, ch)
-    }
-    ch <= t.Value
-    if t.Right != nil {
-        Walk(t.Right, ch)
-    }
+	if t.Left != nil {
+		Walk(t.Left, ch)
+	}
+	ch <= t.Value
+	if t.Right != nil {
+		Walk(t.Right, ch)
+	}
 }
 
 func main() {
-    t1 := tree.New(1)
-    ch := make(chan int)
-    go Walk(t1, ch)
-    const n = 10
-    for i := 0; i < n; i++ {
-        fmt.Println(<-ch, " ")
-    }
+	t1 := tree.New(1)
+	ch := make(chan int)
+	go Walk(t1, ch)
+	const n = 10
+	for i := 0; i < n; i++ {
+		fmt.Println(<-ch, " ")
+	}
 }
 ```
 Then implement `Same` function to determine if two trees store the same values.
@@ -1791,211 +1799,798 @@ Then implement `Same` function to determine if two trees store the same values.
 package main
 
 import (
-    "fmt"
-    //"strings"
-    "golang.org/x/tour/tree"
+	"fmt"
+	//"strings"
+	"golang.org/x/tour/tree"
 )
 
 // Walk walks the tree t sending all values
 // from the tree to the channel ch.
 func Walk(t *tree.Tree, ch chan int) {
-    if t.Left != nil {
-        //fmt.Println("walk left")
-        Walk(t.Left, ch)
-    }
-    ch <- t.Value
-    if t.Right != nil {
-        //fmt.Println("walk right")
-        Walk(t.Right, ch)
-    }
+	if t.Left != nil {
+		//fmt.Println("walk left")
+		Walk(t.Left, ch)
+	}
+	ch <- t.Value
+	if t.Right != nil {
+		//fmt.Println("walk right")
+		Walk(t.Right, ch)
+	}
 }
 
 // Same determines whether the trees
 // t1 and t2 contain the same values.
 func Same(t1, t2 *tree.Tree) bool {
-    ch1 := make(chan int)
-    ch2 := make(chan int)
-    seq1 := make([]int, 10)
-    seq2 := make([]int, 10)
-    go Walk(t1, ch1)
-    go Walk(t2, ch2)
-    for i := 0; i < 10; i++ {
-        seq1 = append(seq1, <-ch1)
-    }
-    for j := 0; j < 10; j++ {
-        seq2 = append(seq2, <-ch2)
-    }
-    rs1 := fmt.Sprintf("%q", seq1)
-    rs2 := fmt.Sprintf("%q", seq2)
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+	seq1 := make([]int, 10)
+	seq2 := make([]int, 10)
+	go Walk(t1, ch1)
+	go Walk(t2, ch2)
+	for i := 0; i < 10; i++ {
+		seq1 = append(seq1, <-ch1)
+	}
+	for j := 0; j < 10; j++ {
+		seq2 = append(seq2, <-ch2)
+	}
+	rs1 := fmt.Sprintf("%q", seq1)
+	rs2 := fmt.Sprintf("%q", seq2)
 
-    return rs1 == rs2
+	return rs1 == rs2
 }
 
 func main() {
-    t1a := tree.New(1)
-    t1b := tree.New(1)
-    t2 := tree.New(2)
-    fmt.Printf("Same(t1a, t1b) -> %v\n", Same(t1a, t1b))
-    fmt.Printf("Same(t1a, t2) -> %v\n", Same(t1a, t2))
+	t1a := tree.New(1)
+	t1b := tree.New(1)
+	t2 := tree.New(2)
+	fmt.Printf("Same(t1a, t1b) -> %v\n", Same(t1a, t1b))
+	fmt.Printf("Same(t1a, t2) -> %v\n", Same(t1a, t2))
 }
 ```
 
-### sync.Mutex
+#### 6.9 sync.Mutex
 In Go, one can use `sync.Mutex` to achieve *Mutual Exclusion*.
 ```
 package main
 
 import (
-    "fmt"
-    "sync"
-    "time"
+	"fmt"
+	"sync"
+	"time"
 )
 
 // SafeCounter is safe to use concurrently.
 type SafeCounter struct {
-    v   map[string]int
-    mux sync.Mutex
+	v   map[string]int
+	mux sync.Mutex
 }
 
 // Inc increments the counter for the given key.
 func (c *SafeCounter) Inc(key string) {
-    c.mux.Lock()
-    // Lock so only one goroutine at a time can access the map c.v.
-    c.v[key]++
-    c.mux.Unlock()
+	c.mux.Lock()
+	// Lock so only one goroutine at a time can access the map c.v.
+	c.v[key]++
+	c.mux.Unlock()
 }
 
 // Value returns the current value of the counter for the given key.
 func (c *SafeCounter) Value(key string) int {
-    c.mux.Lock()
-    // Lock so only one goroutine at a time can access the map c.v.
-    defer c.mux.Unlock()
-    return c.v[key]
+	c.mux.Lock()
+	// Lock so only one goroutine at a time can access the map c.v.
+	defer c.mux.Unlock()
+	return c.v[key]
 }
 
 func main() {
-    c := SafeCounter{v: make(map[string]int)}
-    for i := 0; i < 1000; i++ {
-        go c.Inc("somekey")
-    }
+	c := SafeCounter{v: make(map[string]int)}
+	for i := 0; i < 1000; i++ {
+		go c.Inc("somekey")
+	}
 
-    time.Sleep(time.Second)
-    fmt.Println(c.Value("somekey"))
+	time.Sleep(time.Second)
+	fmt.Println(c.Value("somekey"))
 }
 ```
 
-### Exercise: Web Crawler
+#### 6.10 Exercise: Web Crawler
 Implement web crawler that uses multiple threads to crawl a list of urls.
 
 ```
 package main
 
 import (
-    "fmt"
-    "sync"
-    "time"
+	"fmt"
+	"sync"
+	"time"
 )
 
 type TodoList struct {
-    urls   map[string]bool
-    mux sync.Mutex
+	urls   map[string]bool
+	mux sync.Mutex
 }
 
 type Fetcher interface {
-    // Fetch returns the body of URL and
-    // a slice of URLs found on that page.
-    Fetch(url string) (body string, urls []string, err error)
+	// Fetch returns the body of URL and
+	// a slice of URLs found on that page.
+	Fetch(url string) (body string, urls []string, err error)
 }
 
 // Crawl uses fetcher to recursively crawl
 // pages starting with url, to a maximum of depth.
 func Crawl(todo *TodoList, url string, depth int, fetcher Fetcher) {
-    // TODO: Fetch URLs in parallel.
-    // TODO: Don't fetch the same URL twice.
-    // This implementation doesn't do either:
-    if depth <= 0 {
-        return
-    }
-    //fmt.Println("lock mutex")
-    todo.mux.Lock()
-    loaded := todo.urls[url]
-    if !loaded {
-        todo.urls[url] = true
-    } else {
-        //fmt.Println("unlock mutex")
-        todo.mux.Unlock()
-        return
-    }
-    //fmt.Println("unlock mutex")
-    todo.mux.Unlock()
-    fmt.Println("fetching", url)
-    body, urls, err := fetcher.Fetch(url)
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-    fmt.Printf("found: %s %q\n", url, body)
-    //fmt.Printf("%v\n", urls)
-    for _, u := range urls {
-        go Crawl(todo, u, depth-1, fetcher)
-    }
-    return
+	// TODO: Fetch URLs in parallel.
+	// TODO: Don't fetch the same URL twice.
+	// This implementation doesn't do either:
+	if depth <= 0 {
+		return
+	}
+	//fmt.Println("lock mutex")
+	todo.mux.Lock()
+	loaded := todo.urls[url]
+	if !loaded {
+		todo.urls[url] = true
+	} else {
+		//fmt.Println("unlock mutex")
+		todo.mux.Unlock()
+		return
+	}
+	//fmt.Println("unlock mutex")
+	todo.mux.Unlock()
+	fmt.Println("fetching", url)
+	body, urls, err := fetcher.Fetch(url)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("found: %s %q\n", url, body)
+	//fmt.Printf("%v\n", urls)
+	for _, u := range urls {
+		go Crawl(todo, u, depth-1, fetcher)
+	}
+	return
 }
 
 func main() {
-    todo := TodoList{urls: make(map[string]bool)};
-    fmt.Println("todo", todo)
+	todo := TodoList{urls: make(map[string]bool)};
+	fmt.Println("todo", todo)
 
-    go Crawl(&todo, "https://golang.org/", 4, fetcher)
-    time.Sleep(1000)
+	go Crawl(&todo, "https://golang.org/", 4, fetcher)
+	time.Sleep(1000)
 }
 
 // fakeFetcher is Fetcher that returns canned results.
 type fakeFetcher map[string]*fakeResult
 
 type fakeResult struct {
-    body string
-    urls []string
+	body string
+	urls []string
 }
 
 func (f fakeFetcher) Fetch(url string) (string, []string, error) {
-    if res, ok := f[url]; ok {
-        return res.body, res.urls, nil
-    }
-    return "", nil, fmt.Errorf("not found: %s", url)
+	if res, ok := f[url]; ok {
+		return res.body, res.urls, nil
+	}
+	return "", nil, fmt.Errorf("not found: %s", url)
 }
 
 // fetcher is a populated fakeFetcher.
 var fetcher = fakeFetcher{
-    "https://golang.org/": &fakeResult{
-        "The Go Programming Language",
-        []string{
-            "https://golang.org/pkg/",
-            "https://golang.org/cmd/",
-        },
-    },
-    "https://golang.org/pkg/": &fakeResult{
-        "Packages",
-        []string{
-            "https://golang.org/",
-            "https://golang.org/cmd/",
-            "https://golang.org/pkg/fmt/",
-            "https://golang.org/pkg/os/",
-        },
-    },
-    "https://golang.org/pkg/fmt/": &fakeResult{
-        "Package fmt",
-        []string{
-            "https://golang.org/",
-            "https://golang.org/pkg/",
-        },
-    },
-    "https://golang.org/pkg/os/": &fakeResult{
-        "Package os",
-        []string{
-            "https://golang.org/",
-            "https://golang.org/pkg/",
-        },
-    },
+	"https://golang.org/": &fakeResult{
+		"The Go Programming Language",
+		[]string{
+			"https://golang.org/pkg/",
+			"https://golang.org/cmd/",
+		},
+	},
+	"https://golang.org/pkg/": &fakeResult{
+		"Packages",
+		[]string{
+			"https://golang.org/",
+			"https://golang.org/cmd/",
+			"https://golang.org/pkg/fmt/",
+			"https://golang.org/pkg/os/",
+		},
+	},
+	"https://golang.org/pkg/fmt/": &fakeResult{
+		"Package fmt",
+		[]string{
+			"https://golang.org/",
+			"https://golang.org/pkg/",
+		},
+	},
+	"https://golang.org/pkg/os/": &fakeResult{
+		"Package os",
+		[]string{
+			"https://golang.org/",
+			"https://golang.org/pkg/",
+		},
+	},
+}
+```
+
+#### 6.11 Congratulations!
+
+# Featured Video
+
+## Topic 1 Interface
+In Go, there is no need to declare that a type *implements* an interface, just define all the methods it requires.
+```
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Printf("Hello, %s\n", new(World))
+}
+
+type World struct{}
+
+func (w *World) String() string {
+	return "世界"
+}
+```
+
+```
+package main
+
+import (
+	"fmt"
+)
+
+type Office int
+
+const (
+	Boston Office = iota
+	NewYork
+)
+
+var officePlace = []string{"Cambridge, MA", "New York, NY"}
+
+// this is a method on integer not a pointer of struct
+func (o Office) String() string {
+
+	return "Google, " + officePlace[o]
+}
+
+func main() {
+	fmt.Printf("Hello, %s\n", Boston)
+}
+```
+
+
+```
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	day := time.Now().Weekday()
+	fmt.Printf("Hello, %s (%d)\n", day, day)
+}
+```
+
+```
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func fetch(url string) {
+	y, x := 1, 2
+	for (i )
+}
+
+func main() {
+	start := time.Now()
+	fetch("http://www.google.com/")
+	fmt.Println(time.Since(start))
+}
+```
+
+```
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	fmt.Fprintf(os.Stdout, "Hello, 世界\n")
+}
+```
+
+```
+package main
+
+import (
+	"fmt"
+	"hash/crc32"
+)
+
+func main() {
+	h := crc32.NewIEEE()
+	fmt.Fprintf(h, "Hello, 世界\n")
+	fmt.Printf("hash=%#x\n", h.Sum32())
+}
+```
+
+```
+package main
+
+import (
+	"fmt"
+	"hash/crc32"
+	"io"
+	"os"
+)
+
+func main() {
+	h := crc32.NewIEEE()
+	w := io.MultiWriter(h, os.Stdout)
+	fmt.Fprintf(w, "Hello, 世界\n")
+	fmt.Printf("hash=%#x\n", h.Sum32())
+}
+```
+
+```
+package main
+
+import (
+	"fmt"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL string
+}
+
+func main() {
+	lang := Lang{"Go", 2009, "http://golang.org/"}
+	fmt.Printf("%v\n", lang)	// or %+v
+	// fmt.Printf("%+v\n", lang)
+	// fmt.Printf("%#v\n", lang)
+}
+```
+## Topic 2 Reflection
+```
+package main
+
+import (
+	"os"
+	"reflect"
+	"strconv"
+)
+
+func main() {
+	myPrint("Hello ", 42, "\n")
+}
+
+func myPrint(args ...interface{}) {
+	for _, arg := range args {
+		switch v := reflect.ValueOf(arg); v.Kind() {
+		case reflect.String:
+			os.Stdout.WriteString(v.String())
+		case reflect.Int:
+			os.Stdout.WriteString(strconv.FormatInt(v.Int(), 10))
+		}
+	}
+}
+```
+
+
+```
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL string
+}
+
+func main() {
+	lang := Lang{"Go", 2009, "http://golang.org/"}
+	data, err := json.Marshal(lang)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", data)
+}
+```
+
+```
+package main
+
+import (
+	"encoding/xml"
+	"fmt"
+	"log"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL string
+}
+
+func main() {
+	lang := Lang{"Go", 2009, "http://golang.org/"}
+	data, err := xml.MarshalIndent(lang, "", "  ")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%s\n", data)
+}
+```
+
+```
+package main
+
+import (
+	"io"
+	"log"
+	"os"
+	
+)
+
+func main() {
+	input, err := os.Open("/Users/rsc/lang.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	io.Copy(os.Stdout, input)
+}
+```
+
+```
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"os"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL  string
+}
+
+func main() {
+	input, err := os.Open("./lang.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	dec := json.NewDecoder(input)
+	for {
+		var lang Lang
+		err := dec.Decode(&lang)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			log.Fatal(err)
+		}
+		fmt.Printf("%v\n", lang)
+	}
+}
+```
+
+```
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"os"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL  string
+}
+
+func do(f func(Lang)) {
+	input, err := os.Open("./lang.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	dec := json.NewDecoder(input)
+	for {
+		var lang Lang
+		err := dec.Decode(&lang)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			log.Fatal(err)
+		}
+		f(lang)
+	}
+}
+
+func main() {
+	do(func(lang Lang) {
+		fmt.Printf("%v\n", lang)
+	})
+}
+```
+
+```
+package main
+
+import (
+	"encoding/json"
+	"encoding/xml"
+	"fmt"
+	"io"
+	"log"
+	"os"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL  string
+}
+
+func do(f func(Lang)) {
+	input, err := os.Open("./lang.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	dec := json.NewDecoder(input)
+	for {
+		var lang Lang
+		err := dec.Decode(&lang)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			log.Fatal(err)
+		}
+		f(lang)
+	}
+}
+
+func main() {
+	do(func(lang Lang) {
+		data, err := xml.MarshalIndent(lang, "", "  ")
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("%s", data)
+	})
+}
+```
+
+```
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+	"time"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL  string
+}
+
+func do(f func(Lang)) {
+	input, err := os.Open("./lang.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	dec := json.NewDecoder(input)
+	for {
+		var lang Lang
+		err := dec.Decode(&lang)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			log.Fatal(err)
+		}
+		f(lang)
+	}
+}
+
+func count(name, url string) {
+	start := time.Now()
+	r, err := http.Get(url)
+	if err != nil {
+		fmt.Printf("%s: %s", name, err)
+		return
+	}
+	n, _ := io.Copy(ioutil.Discard, r.Body)
+	r.Body.Close()
+	fmt.Printf("%s %d [%.2fs]\n", name, n, time.Since(start).Seconds())
+}
+
+func main() {
+	start := time.Now()
+	do(func(lang Lang) {
+		count(lang.Name, lang.URL)
+	})
+	fmt.Printf("%.2fs total\n", time.Since(start).Seconds())
+}
+```
+## Topic 3 Concurrency
+
+```
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+	"time"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL  string
+}
+
+func do(f func(Lang)) {
+	input, err := os.Open("./lang.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	dec := json.NewDecoder(input)
+	for {
+		var lang Lang
+		err := dec.Decode(&lang)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			log.Fatal(err)
+		}
+		f(lang)
+	}
+}
+
+func count(name, url string) {
+	start := time.Now()
+	r, err := http.Get(url)
+	if err != nil {
+		fmt.Printf("%s: %s", name, err)
+		return
+	}
+	n, _ := io.Copy(ioutil.Discard, r.Body)
+	r.Body.Close()
+	fmt.Printf("%s %d [%.2fs]\n", name, n, time.Since(start).Seconds())
+}
+
+func main() {
+	do(func(lang Lang) {
+		go count(lang.Name, lang.URL)
+	})
+	time.Sleep(10 * time.Second)
+}
+```
+
+```
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+	"time"
+)
+
+type Lang struct {
+	Name string
+	Year int
+	URL  string
+}
+
+func do(f func(Lang)) {
+	input, err := os.Open("./lang.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	dec := json.NewDecoder(input)
+	for {
+		var lang Lang
+		err := dec.Decode(&lang)
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+			log.Fatal(err)
+		}
+		f(lang)
+	}
+}
+
+func count(name, url string, c chan<- string) {
+	start := time.Now()
+	r, err := http.Get(url)
+	if err != nil {
+		c <- fmt.Sprintf("%s: %s", name, err)
+		return
+	}
+	n, _ := io.Copy(ioutil.Discard, r.Body)
+	r.Body.Close()
+	dt := time.Since(start).Seconds()
+	c <- fmt.Sprintf("%s %d [%.2fs]\n", name, n, dt)
+}
+
+func main() {
+	start := time.Now()
+	c := make(chan string)
+	n := 0
+	do(func(lang Lang) {
+		n++
+		go count(lang.Name, lang.URL, c)
+	})
+	for i := 0; i < n; i++ {
+		fmt.Print(<-c)
+	}
+	fmt.Printf("%.2fs total\n", time.Since(start).Seconds())
+}
+```
+
+```
+func main() {
+	start := time.Now()
+	c := make(chan string)
+	n := 0
+	do(func(lang Lang) {
+		n++
+		go count(lang.Name, lang.URL, c)
+	})
+
+	timeout := time.After(10 * time.Second)
+	for i := 0; i < n; i++ {
+		select {
+		case result := <-c:
+			fmt.Print(result)
+		case <-timeout:
+			fmt.Print("Timed out\n")
+			return
+		}
+	}
+	fmt.Printf("%.2fs total\n", time.Since(start).Seconds())
 }
 ```
