@@ -1,9 +1,14 @@
 # Learning Go
 
+This document is based on the learning material from [A Tour of Go](https://go.dev/tour/)
+
 ## Part I, Using the tour
+
 ### 1. Welcome
+
 #### 1.1 Hello World
-```
+
+```go
 package main
 
 import "fmt"
@@ -12,8 +17,10 @@ func main() {
 	fmt.Printf("Hello, world\n")
 }
 ```
+
 Update:
-```
+
+```go
 package main
 
 import "fmt"
@@ -23,89 +30,144 @@ func main() {
 	fmt.Printf("Hello, %v\n", 名字)
 }
 ```
+
 Note that any unicode letters can be used for variable names.
 
 #### 1.2 Go local
+
 The tour is available in many different languages
 
 #### 1.3 Go offline
+
 The tour is also available as a stand-alone program. Run following command to install it:
-```
+
+```sh
 go get golang.org/x/tour
 ```
+
 Then run `tour` to start it.
 
 #### 1.4 The Go Playground
+
 The tour is built atop the [Go Playground](https://play.golang.org). This services can be used to test ideas online.
 
 #### 1.5 Congratulations
+
 You now know how to use this tour.
 
 ## Part II Basics
-### 2. Packages, variables and funcitons
+
+### 2. Packages, variables and functions
+
 #### 2.1  Packages
+
 Go program consists of packages. Go program must start running in package `main`.
 
-#### 2.2 Imports
-Import statements can be grouped into *Factored* import.
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main() {
+	fmt.Println("My favorite number is", rand.Intn(10))
+}
 ```
+
+#### 2.2 Imports
+
+Import statements can be grouped into *Factored* import.
+
+```go
 import (
 	"fmt"
 	"math/rand"
 )
 ```
+
 This is preferred format over:
-```
+
+```go
 import "fmt"
 import "math/rand"
 ```
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	fmt.Printf("Now you have %g problems.\n", math.Sqrt(7))
+}
+```
+
 #### 2.3 Exported names
-A is exported if it begins with a capital letter, for example: `Pi`.
+
+A name is exported if it begins with a capital letter, for example: `Pi`.
 
 `math.pi` is not exported, `math.Pi` is.
 
 #### 2.4 Functions
+
 Function declaration/definition
 An example of function:
-```
+
+```go
 func add(x int, y int) int {
 	return x + y
 }
 ```
+
 Notice the argument list, return type
 
 #### 2.5 Functions continued
+
 Combine type annotation
-```
+
+```go
 x int, y int
 ```
+
 can be combined as:
-```
+
+```go
 x, y int
 ```
 
-#### 2.6 Multiple result
+#### 2.6 Multiple results
+
 Function can return multiple results (similar to returning tuple in Python)
-```
+
+```go
 func swap(x, y string) (string, string) {
 	return y, x
 }
 ```
 
 #### 2.7 Named return values
-```
+
+```go
 func split(sum int) (x, y int) {
 	x = sum * 4 / 9
 	y = sum = x
 	return
 }
 ```
+
 The `return` statement has no arguments, it is a *naked* return. It should only be used in short functions.
 
 #### 2.8 Variables
+
 Use `var` to declare a list of variables.
 A `var` statement can be used both at package level or at function level.
-```
+
+```go
 package main
 
 import "fmt"
@@ -119,19 +181,24 @@ func main() {
 ```
 
 #### 2.9 Variable with initializers
+
 If an initializer is present, type definition can be omitted.
-```
+
+```go
 var i, j int = 1, 2
 ```
 
 #### 2.10 Short variable declaration
+
 Short assignment `:=` can be used inside a function. It can only be used inside a function, where a `var` declaration with implicit type is allowed.
 
 It seems `:=` defines variable on the stack.
 
 #### 2.11 Basic Types
+
 Following are built-in types of Go
-```
+
+```go
 var (
 	IsBusy bool = true
 	IsFree bool = false
@@ -164,27 +231,35 @@ var (
 ```
 
 #### 2.12 Zero values
+
 Variable without initializer will have default zero value. 0 for numeric types, false for bool, '' for string.
 
-#### 2.13 Type Conversion
+#### 2.13 Type Conversions
+
 Type conversion must be explicit, `T(v)`, examples:
-```
+
+```go
 var i int = 42
 var f float64 = float64(i)
 var u uint = uint(f)
 ```
+
 A simpler form:
-```
+
+```go
 i := 42
 f := float64(i)
 u := uint(f)
 ```
+
 This simpler form can be used inside a function.
 
 #### 2.14 Type inference
+
 Type can be inferred when declaring a variable from the right hand side.
 Examples:
-```
+
+```go
 var i int
 j := i // j is an int
 
@@ -194,66 +269,88 @@ g := 0.867 + 0.5i // complex128
 ```
 
 #### 2.15 Constants
+
 Constant can be declared with `const`. Constants cannot be declared using `:=` syntax.
 
 This implies constants won't get allocated in stack, only in the heap.
 
 #### 2.16 Numeric Constants
+
 Numeric constants are high-precision values.
 
 #### 2.17 Congratulations
+
 This module is done
 
 ### 3. Flow control statements: for, if, else, switch and defer
 
 #### 3.1 For loop
-```
+
+```go
 sum := 0
 for i := 0; i < 10; i++ {
 	sum += i
 }
 ```
+
 #### 3.2 For continued
+
 Initializer, post statement can be omitted
-```
+
+```go
 sum := 1
 for ; sum < 1000; {
 	sum += sum
 }
 ```
+
 #### 3.3 For is Go's `while`
-Simicolons can also be dropped and it becomes `while`
-```
+
+Semicolons can also be dropped and it becomes `while`
+
+```go
 for sum < 1000 {
 	sum += sum
 }
 ```
+
 #### 3.4 Forever
+
 If condition is omitted, it becomes forever
-```
+
+```go
 for {
 	// forever
 }
 ```
 
 #### 3.5 `if` statement
+
 Parenthesis can be omitted, braces are needed
-```
+
+```go
 if x < 0 {
 	fmt.Printf("x is less than 0")
 } else {
 	fmt.Printf("x is no less than 0")
 }
 ```
+
 #### 3.6 `if` with short statement
-`if` can start with a short statment
-```
+
+`if` can start with a short statement
+
+```go
 if v := input; v < limit {
 	fmt.Printf("input is less than limit")
 }
 ```
+
+The scope of `v` is only the scope of `if`.
+
 #### 3.7 `if` and `else`
-```
+
+```go
 if v := math.Power(x, n); v < lim {
 	return v
 } else {
@@ -261,9 +358,11 @@ if v := math.Power(x, n); v < lim {
 }
 ```
 
-#### 3.8 Esercise: Loops and Functions
+#### 3.8 Exercise: Loops and Functions
+
 Implement a function `Sqrt` that calculates square root of given value.
-```
+
+```go
 package main
 
 import (
@@ -292,8 +391,10 @@ func main() {
 ```
 
 #### 3.9 `switch` statement
+
 Example:
-```
+
+```go
 switch os := runtime.GOOS; os {
 case "darwin":
 	fmt.Println("OS X.")
@@ -307,10 +408,12 @@ default:
 ```
 
 #### 3.10 `switch` evaluation order
+
 From top to bottom, stopping when a case succeeds.
 
 #### 3.11 `switch` can be written with no condition
-```
+
+```go
 t := time.Now()
 switch {
 case t.Hour() < 12:
@@ -323,8 +426,10 @@ default:
 ```
 
 #### 3.12 `defer` statement
+
 Defers the execution until the surrounding function returns.
-```
+
+```go
 package main
 
 import "fmt"
@@ -337,15 +442,20 @@ func main() {
 ```
 
 #### 3.13 Stacking `defer`s
+
 `defer` will be stacked, they will be executed in last-in-first-out order.
 
 #### 3.14 Congratulations
+
 This module finishes.
 
 ### 4 More types: structs, slices, maps
+
 #### 4.1 Pointer
+
 Define a point type using `*`. Get address using `&`.
-```
+
+```go
 package main
 
 import "fmt"
@@ -363,9 +473,14 @@ func main() {
 	fmt.Println(j) // see the new value of j
 }
 ```
+
+The semantics of operator `&` is return the a pointer to the operand. And `*` is return the value of the variable that the pointer is pointing to.
+
 #### 4.2 Structs
+
 Struct defines a collection of fields
-```
+
+```go
 package main
 
 import "fmt"
@@ -383,10 +498,12 @@ func main() {
 #### 4.3 Struct fields
 
 #### 4.4 Pointers to structs
+
 `(*p).X` is cumbersome, language permits to write `p.X`.
 
 #### 4.5 Struct literals
-```
+
+```go
 package main
 
 import "fmt"
@@ -408,8 +525,10 @@ func main() {
 ```
 
 #### 4.6 Arrays
+
 `[n]T` is an array of n values of type T
-```
+
+```go
 package main
 
 import "fmt"
@@ -427,8 +546,10 @@ func main() {
 ```
 
 #### 4.7 Array slices
+
 A slice is defined by two indices, e.g. `a[low:high]`
-```
+
+```go
 package main
 
 import "fmt"
@@ -442,7 +563,8 @@ func main() {
 ```
 
 #### 4.8 Array slices are references
-```
+
+```go
 package main
 
 import "fmt"
@@ -466,9 +588,13 @@ func main() {
 }
 ```
 
+Changes made to an array slice is visible in the array itself.
+
 #### 4.9 Slice literals
+
 A slice literals defines an array without the length
-```
+
+```go
 package main
 
 import "fmt"
@@ -496,13 +622,17 @@ func main() {
 ```
 
 #### 4.10 Slice defaults
+
 If lower/upper bound is omitted, it defaults to 0 and length of array.
 For the array
-```
+
+```go
 var a [10]int
 ```
+
 these slice expressions are equivalent:
-```
+
+```go
 a[0:10]
 a[:10]
 a[0:]
@@ -510,8 +640,10 @@ a[:]
 ```
 
 #### 4.11 Slice length and capacity
+
 A slice has both a *length* and a *capacity*, these can be reported by `len(s)` and `cap(s)` respectively.
-```
+
+```go
 package main
 
 import "fmt"
@@ -539,8 +671,10 @@ func printSlice(s []int) {
 ```
 
 #### 4.12 Nil slices
+
 Nil slices has a zero length and capacity.
-```
+
+```go
 package main
 
 import "fmt"
@@ -555,8 +689,10 @@ func main() {
 ```
 
 #### 4.13 Creating slice with `make`
-Slices can be created with function `make`.
-```
+
+Slices can be created with function `make`. This is how we create dynamically-sized arrays.
+
+```go
 package main
 
 import "fmt"
@@ -582,8 +718,10 @@ func printSlice(s string, x []int) {
 ```
 
 #### 4.14 Slices of slices
+
 Slice can contain any type, including other slices
-```
+
+```go
 package main
 
 import (
@@ -613,8 +751,10 @@ func main() {
 ```
 
 #### 4.15 Appending to a slice
+
 Built-in function `append` can be used to append new elements to a slice
-```
+
+```go
 var s []int
 
 // append works on nil slices.
@@ -622,8 +762,10 @@ s = append(s, 0, 1, 2)
 ```
 
 #### 4.16 Range
+
 `for` statement has a `range` form, for example:
-```
+
+```go
 package main
 
 import "fmt"
@@ -636,16 +778,20 @@ func main() {
 	}
 }
 ```
+
 #### 4.17 Range continued
+
 You can skip index by using variable name `_`.
-```
+
+```go
 for _, value := range pow {
 	fmt.Printf("%d\n", value)
 }
 ```
 
 #### 4.18 Exercise: Slices
-```
+
+```go
 package main
 
 import "golang.org/x/tour/pic"
@@ -669,8 +815,10 @@ func main() {
 ```
 
 #### 4.19 Maps
+
 A map maps keys to values. Zero value of a map is `nil`. A `nil` map has no keys, nor can keys be added. The `make` function can return a map of given type.
-```
+
+```go
 package main
 
 import "fmt"
@@ -691,11 +839,12 @@ func main() {
 ```
 
 #### 4.20 Map literals
+
 Map literals can be used to initialize a map.
 
 #### 4.21 Map literals continued
 
-```
+```go
 package main
 
 import "fmt"
@@ -709,7 +858,7 @@ var (
 		"Bell Labs": Vertex{
 			40.68433, -74.39967,
 		},
-		"Google": { // type name can be omited
+		"Google": { // type name can be omitted
 			37.42202, -122.08408,
 		},
 	}
@@ -726,24 +875,34 @@ func main() {
 ```
 
 #### 4.22 Mutating Maps
+
 Assign an element
-```
+
+```go
 m[key] = elem
 ```
+
 Retrieve an element
-```
+
+```go
 elem = m[key]
 ```
+
 Test if a key is defined with a two-value assignment
-```
+
+```go
 elem, ok = m[key]
 ```
+
 or
-```
+
+```go
 elem, ok := m[key]
 ```
+
 Example:
-```
+
+```go
 package main
 
 import "fmt"
@@ -766,7 +925,8 @@ func main() {
 ```
 
 #### 4.23 Exercise: Maps
-```
+
+```go
 package main
 
 import (
@@ -787,49 +947,11 @@ func main() {
 }
 ```
 
-#### Mutating Maps
-Assign an element
-```
-m[key] = elem
-```
-Retrieve an element
-```
-elem = m[key]
-```
-Test if a key is defined with a two-value assignment
-```
-elem, ok = m[key]
-```
-or
-```
-elem, ok := m[key]
-```
-Example:
-```
-package main
-
-import "fmt"
-
-func main() {
-	m := make(map[string]int)
-
-	m["Answer"] = 42
-	fmt.Println("The value:", m["Answer"])
-
-	m["Answer"] = 48
-	fmt.Println("The value:", m["Answer"])
-
-	delete(m, "Answer")
-	fmt.Println("The value:", m["Answer"])
-
-	v, ok := m["Answer"]
-	fmt.Println("The value:", v, "Present?", ok)
-}
-```
-
 #### 4.24 Function Values
+
 Function values are like function objects in JavaScript.
-```
+
+```go
 package main
 
 import (
@@ -853,8 +975,10 @@ func main() {
 ```
 
 #### 4.25 Function closures
+
 Function closure is similar to JavaScript's equivalent
-```
+
+```go
 package main
 
 import "fmt"
@@ -880,7 +1004,7 @@ func main() {
 
 #### 4.26 Exercise: Fibonacci closure
 
-```
+```go
 package main
 
 import "fmt"
@@ -905,15 +1029,20 @@ func main() {
 	}
 }
 ```
+
 #### 4.27 Congratulations
 
 ## Part III Methods and interfaces
+
 ### 5 Methods and interfaces
+
 #### 5.1 methods
+
 Go doesn't have classes but one can define methods on types.
 
 A method is a function with a special *receiver* argument.
-```
+
+```go
 package main
 
 import (
@@ -936,8 +1065,10 @@ func main() {
 ```
 
 #### 5.2 Methods are functions
+
 A method is just a function with a receiver argument
-```
+
+```go
 func main() {
 	v := Vertex{3, 4}
 	fmt.Println(Abs(v))
@@ -945,8 +1076,10 @@ func main() {
 ```
 
 #### 5.3 Methods continued
+
 Method can be defined on non-struct types too
-```
+
+```go
 package main
 
 import (
@@ -970,7 +1103,10 @@ func main() {
 ```
 
 #### 5.4 pointer receivers
-```
+
+A method is a function with a type receiver. You can define a pointer receiver. With pointer receiver, a function can change the value of the variable that the pointer is pointing to.
+
+```go
 package main
 
 import (
@@ -997,12 +1133,18 @@ func main() {
 	fmt.Println(v.Abs())
 }
 ```
+
 #### 5.5 Pointers and functions
 
 #### 5.6 Methods and pointer indirection
+
+When calling a function with a pointer received, if the input is a value not a pointer, Go will take the pointer to it automatically as a convenience.
+
 #### 5.7 Methods and pointer indirection (2)
+
 Pointer argument only accepts pointer, pointer receiver can take both value or pointer.
-```
+
+```go
 package main
 
 import "fmt"
@@ -1035,6 +1177,7 @@ func main() {
 ```
 
 #### 5.8 Choosing a value or pointer receiver
+
 There are two reasons to use a pointer receiver:
 
 1. You can modify the passed in object
@@ -1043,8 +1186,10 @@ There are two reasons to use a pointer receiver:
 Generally speaking, all methods on a given type should have either value or pointer receivers but not a mixture of both.
 
 #### 5.9 Interfaces
+
 Interface defines a set of method signatures.
-```
+
+```go
 package main
 
 import (
@@ -1090,8 +1235,10 @@ func (v *Vertex) Abs() float64 {
 ```
 
 #### 5.10 Interfaces are implemented implicitly
+
 We don't need to use `implements` keyword to declare that.
-```
+
+```go
 package main
 
 import "fmt"
@@ -1117,8 +1264,10 @@ func main() {
 ```
 
 #### 5.11 Interface values
+
 Interface values can be though of as a tuple of a value and a concrete type: `(value, type)`
-```
+
+```go
 package main
 
 import (
@@ -1162,8 +1311,10 @@ func describe(i I) {
 ```
 
 #### 5.12 Interface values with `nil` underlying values
+
 Interface value may hold a concrete value which is `nil`.
-```
+
+```go
 package main
 
 import "fmt"
@@ -1203,11 +1354,14 @@ func describe(i I) {
 ```
 
 #### 5.13 `nil` interface values
+
 A `nil` interface value holds neither value nor concrete type.
 
 #### 5.14 The empty interface
+
 Interface without any methods is *empty interface*.
-```
+
+```go
 package main
 
 import "fmt"
@@ -1247,8 +1401,10 @@ func describe(i I) {
 ```
 
 #### 5.15 Type assertions
+
 A type assertion provides access to an interface value's underlying concrete value.
-```
+
+```go
 package main
 
 import "fmt"
@@ -1271,8 +1427,10 @@ func main() {
 ```
 
 #### 5.16 Type switches
-A type switch is a construct that permits erveral type asertions in series.
-```
+
+A type switch is a construct that permits several type assertions in series.
+
+```go
 package main
 
 import "fmt"
@@ -1296,8 +1454,10 @@ func main() {
 ```
 
 #### 5.17 Stringers
+
 Stringer interface defines one method `String()`. A type that implements this interface provides a way to convert its values into strings.
-```
+
+```go
 package main
 
 import "fmt"
@@ -1319,11 +1479,12 @@ func main() {
 ```
 
 #### 5.18 Exercise: Stringers
+
 Make the IPAddr type implement fmt.Stringer to print the address as a dotted quad.
 
 For instance, `IPAddr{1, 2, 3, 4}` should print as "`1.2.3.4`".
 
-```
+```go
 package main
 
 import (
@@ -1355,14 +1516,18 @@ func main() {
 ```
 
 #### 5.19 Errors
+
 Error Type is a built-in interface
-```
+
+```go
 type error interface {
 	Error() string
 }
 ```
+
 `nil` value of error type indicate success, non-nil error denotes failure.
-```
+
+```go
 package main
 
 import (
@@ -1395,7 +1560,8 @@ func main() {
 ```
 
 #### 5.20 Exercise: Errors
-```
+
+```go
 package main
 
 import (
@@ -1425,12 +1591,16 @@ func main() {
 ```
 
 #### 5.21 Readers
+
 The `io` package defines `io.Reader` interface, which as a `Read` method:
-```
+
+```go
 func (T) Read(b []byte) (n int, err error)
 ```
+
 Example:
-```
+
+```go
 package main
 
 import (
@@ -1457,7 +1627,8 @@ func main() {
 #### 5.22 Exercise: Readers
 
 Implement a `Reader` type that emits an infinite stream of ASCII character 'A'
-```
+
+```go
 package main
 
 import "golang.org/x/tour/reader"
@@ -1473,9 +1644,12 @@ func main() {
 	reader.Validate(MyReader{})
 }
 ```
+
 #### 5.23 Exercise: rot13Reader
+
 Define a new `Reader` by making use of another one
-```
+
+```go
 package main
 
 import (
@@ -1498,10 +1672,12 @@ func main() {
 	io.Copy(os.Stdout, &r)
 }
 ```
+
 #### 5.24 Images
+
 Package `image` defines interface `Image`
 
-```
+```go
 package main
 
 import (
@@ -1526,7 +1702,8 @@ func main() {
 ```
 
 Example:
-```
+
+```go
 package main
 
 import (
@@ -1542,8 +1719,10 @@ func main() {
 ```
 
 #### 5.25 Exercise: Images
+
 Defines your own image type that implements the `Image` interface
-```
+
+```go
 package main
 
 import (
@@ -1583,13 +1762,33 @@ func main() {
 
 #### 5.26 Congratulations!
 
-## Part IV Concurrency
-### 6 Concurrency
-#### 6.1 Goroutines
+## Part IV Generics
+
+### 6 Generics
+
+#### 6.1 Type parameters
+
+Go functions can be written to support generic types. The type parameter goes after the function name, before the arguments, in brackets, like this:
+
+```go
+func Index[T comparable](s []T, x T) int
+```
+
+#### 6.2 Generic types
+
+Types can also be defined as generic. A type can be parameterized with a type parameter, which goes after the type name, between brackets.
+
+## Part V Concurrency
+
+### 7 Concurrency
+
+#### 7.1 Goroutines
+
 In Go, the term *goroutine* refers to a lightweight thread. Just use keyword `go` to start a new goroutine
 
 Example:
-```
+
+```go
 package main
 
 import (
@@ -1610,10 +1809,11 @@ func main() {
 }
 ```
 
-#### 6.2 Channels
+#### 7.2 Channels
+
 Channels are typed conduit for communications between two goroutines.
 
-```
+```go
 package main
 
 import "fmt"
@@ -1637,15 +1837,20 @@ func main() {
 	fmt.Println(x, y, x+y)
 }
 ```
+
 Two goroutines were started, each computes summary of half of the slice. Then results are sent back to main thread using channel.
 
-#### 6.3 Buffered Channels
+#### 7.3 Buffered Channels
+
 Channels can be buffered, buffer size can be specified when being created
-```
+
+```go
 ch := make(chan int, 100)
 ```
+
 Example:
-```
+
+```go
 package main
 
 import "fmt"
@@ -1663,11 +1868,13 @@ func main() {
 }
 ```
 
-#### 6.4 Range and Close
+#### 7.4 Range and Close
+
 A sender can close the channel to indicate there's no more values to be sent. Receivers can test if a channel is closed, but should never close a channel.
 
 Examples:
-```
+
+```go
 package main
 
 import (
@@ -1692,10 +1899,12 @@ func main() {
 }
 ```
 
-#### 6.5 Select
+#### 7.5 Select
+
 `select` statement lets a goroutine to wait on multiple channels
 Example:
-```
+
+```go
 package main
 
 import "fmt"
@@ -1703,7 +1912,7 @@ import "fmt"
 func fibonacci(c, quit chan int) {
 	x, y := 0, 1
 	for {
-		select {
+		select {    // select statement lets a goroutine wait on multiple communication operations
 		case c <- x:
 			x, y = y, x+y
 		case <-quit:
@@ -1726,10 +1935,12 @@ func main() {
 }
 ```
 
-#### 6.6 Default Selection
+#### 7.6 Default Selection
+
 `default` case is run when there's no other case is ready, it can be used to try a send or receive without blocking.
 Example:
-```
+
+```go
 package main
 
 import (
@@ -1755,18 +1966,23 @@ func main() {
 }
 ```
 
-#### 6.7 Exercise: Equivalent Binary Trees
-#### 6.8 Exercise: Equivalent Binary Trees
+#### 7.7 Exercise: Equivalent Binary Trees
+
 Use predefined tree structure
-```
+
+```go
 type Tree struct {
 	Left *Tree
 	Value int
 	Right *Tree
 }
 ```
+
+#### 7.8 Exercise: Equivalent Binary Trees
+
 First, implement a `Walk` function that traverse tree and emits its value
-```
+
+```go
 package main
 
 import (
@@ -1794,8 +2010,10 @@ func main() {
 	}
 }
 ```
+
 Then implement `Same` function to determine if two trees store the same values.
-```
+
+```go
 package main
 
 import (
@@ -1848,9 +2066,11 @@ func main() {
 }
 ```
 
-#### 6.9 sync.Mutex
+#### 7.9 sync.Mutex
+
 In Go, one can use `sync.Mutex` to achieve *Mutual Exclusion*.
-```
+
+```go
 package main
 
 import (
@@ -1892,10 +2112,11 @@ func main() {
 }
 ```
 
-#### 6.10 Exercise: Web Crawler
+#### 7.10 Exercise: Web Crawler
+
 Implement web crawler that uses multiple threads to crawl a list of urls.
 
-```
+```go
 package main
 
 import (
@@ -2008,589 +2229,4 @@ var fetcher = fakeFetcher{
 }
 ```
 
-#### 6.11 Congratulations!
-
-# Featured Video
-
-## Topic 1 Interface
-In Go, there is no need to declare that a type *implements* an interface, just define all the methods it requires.
-```
-package main
-
-import (
-	"fmt"
-)
-
-func main() {
-	fmt.Printf("Hello, %s\n", new(World))
-}
-
-type World struct{}
-
-func (w *World) String() string {
-	return "世界"
-}
-```
-
-```
-package main
-
-import (
-	"fmt"
-)
-
-type Office int
-
-const (
-	Boston Office = iota
-	NewYork
-)
-
-var officePlace = []string{"Cambridge, MA", "New York, NY"}
-
-// this is a method on integer not a pointer of struct
-func (o Office) String() string {
-
-	return "Google, " + officePlace[o]
-}
-
-func main() {
-	fmt.Printf("Hello, %s\n", Boston)
-}
-```
-
-
-```
-package main
-
-import (
-	"fmt"
-	"time"
-)
-
-func main() {
-	day := time.Now().Weekday()
-	fmt.Printf("Hello, %s (%d)\n", day, day)
-}
-```
-
-```
-package main
-
-import (
-	"fmt"
-	"time"
-)
-
-func fetch(url string) {
-	y, x := 1, 2
-	for (i )
-}
-
-func main() {
-	start := time.Now()
-	fetch("http://www.google.com/")
-	fmt.Println(time.Since(start))
-}
-```
-
-```
-package main
-
-import (
-	"fmt"
-	"os"
-)
-
-func main() {
-	fmt.Fprintf(os.Stdout, "Hello, 世界\n")
-}
-```
-
-```
-package main
-
-import (
-	"fmt"
-	"hash/crc32"
-)
-
-func main() {
-	h := crc32.NewIEEE()
-	fmt.Fprintf(h, "Hello, 世界\n")
-	fmt.Printf("hash=%#x\n", h.Sum32())
-}
-```
-
-```
-package main
-
-import (
-	"fmt"
-	"hash/crc32"
-	"io"
-	"os"
-)
-
-func main() {
-	h := crc32.NewIEEE()
-	w := io.MultiWriter(h, os.Stdout)
-	fmt.Fprintf(w, "Hello, 世界\n")
-	fmt.Printf("hash=%#x\n", h.Sum32())
-}
-```
-
-```
-package main
-
-import (
-	"fmt"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL string
-}
-
-func main() {
-	lang := Lang{"Go", 2009, "http://golang.org/"}
-	fmt.Printf("%v\n", lang)	// or %+v
-	// fmt.Printf("%+v\n", lang)
-	// fmt.Printf("%#v\n", lang)
-}
-```
-## Topic 2 Reflection
-```
-package main
-
-import (
-	"os"
-	"reflect"
-	"strconv"
-)
-
-func main() {
-	myPrint("Hello ", 42, "\n")
-}
-
-func myPrint(args ...interface{}) {
-	for _, arg := range args {
-		switch v := reflect.ValueOf(arg); v.Kind() {
-		case reflect.String:
-			os.Stdout.WriteString(v.String())
-		case reflect.Int:
-			os.Stdout.WriteString(strconv.FormatInt(v.Int(), 10))
-		}
-	}
-}
-```
-
-
-```
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"log"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL string
-}
-
-func main() {
-	lang := Lang{"Go", 2009, "http://golang.org/"}
-	data, err := json.Marshal(lang)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", data)
-}
-```
-
-```
-package main
-
-import (
-	"encoding/xml"
-	"fmt"
-	"log"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL string
-}
-
-func main() {
-	lang := Lang{"Go", 2009, "http://golang.org/"}
-	data, err := xml.MarshalIndent(lang, "", "  ")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%s\n", data)
-}
-```
-
-```
-package main
-
-import (
-	"io"
-	"log"
-	"os"
-	
-)
-
-func main() {
-	input, err := os.Open("/Users/rsc/lang.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	io.Copy(os.Stdout, input)
-}
-```
-
-```
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"io"
-	"log"
-	"os"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL  string
-}
-
-func main() {
-	input, err := os.Open("./lang.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	dec := json.NewDecoder(input)
-	for {
-		var lang Lang
-		err := dec.Decode(&lang)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			log.Fatal(err)
-		}
-		fmt.Printf("%v\n", lang)
-	}
-}
-```
-
-```
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"io"
-	"log"
-	"os"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL  string
-}
-
-func do(f func(Lang)) {
-	input, err := os.Open("./lang.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	dec := json.NewDecoder(input)
-	for {
-		var lang Lang
-		err := dec.Decode(&lang)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			log.Fatal(err)
-		}
-		f(lang)
-	}
-}
-
-func main() {
-	do(func(lang Lang) {
-		fmt.Printf("%v\n", lang)
-	})
-}
-```
-
-```
-package main
-
-import (
-	"encoding/json"
-	"encoding/xml"
-	"fmt"
-	"io"
-	"log"
-	"os"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL  string
-}
-
-func do(f func(Lang)) {
-	input, err := os.Open("./lang.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	dec := json.NewDecoder(input)
-	for {
-		var lang Lang
-		err := dec.Decode(&lang)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			log.Fatal(err)
-		}
-		f(lang)
-	}
-}
-
-func main() {
-	do(func(lang Lang) {
-		data, err := xml.MarshalIndent(lang, "", "  ")
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Printf("%s", data)
-	})
-}
-```
-
-```
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"io"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"os"
-	"time"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL  string
-}
-
-func do(f func(Lang)) {
-	input, err := os.Open("./lang.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	dec := json.NewDecoder(input)
-	for {
-		var lang Lang
-		err := dec.Decode(&lang)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			log.Fatal(err)
-		}
-		f(lang)
-	}
-}
-
-func count(name, url string) {
-	start := time.Now()
-	r, err := http.Get(url)
-	if err != nil {
-		fmt.Printf("%s: %s", name, err)
-		return
-	}
-	n, _ := io.Copy(ioutil.Discard, r.Body)
-	r.Body.Close()
-	fmt.Printf("%s %d [%.2fs]\n", name, n, time.Since(start).Seconds())
-}
-
-func main() {
-	start := time.Now()
-	do(func(lang Lang) {
-		count(lang.Name, lang.URL)
-	})
-	fmt.Printf("%.2fs total\n", time.Since(start).Seconds())
-}
-```
-## Topic 3 Concurrency
-
-```
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"io"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"os"
-	"time"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL  string
-}
-
-func do(f func(Lang)) {
-	input, err := os.Open("./lang.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	dec := json.NewDecoder(input)
-	for {
-		var lang Lang
-		err := dec.Decode(&lang)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			log.Fatal(err)
-		}
-		f(lang)
-	}
-}
-
-func count(name, url string) {
-	start := time.Now()
-	r, err := http.Get(url)
-	if err != nil {
-		fmt.Printf("%s: %s", name, err)
-		return
-	}
-	n, _ := io.Copy(ioutil.Discard, r.Body)
-	r.Body.Close()
-	fmt.Printf("%s %d [%.2fs]\n", name, n, time.Since(start).Seconds())
-}
-
-func main() {
-	do(func(lang Lang) {
-		go count(lang.Name, lang.URL)
-	})
-	time.Sleep(10 * time.Second)
-}
-```
-
-```
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"io"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"os"
-	"time"
-)
-
-type Lang struct {
-	Name string
-	Year int
-	URL  string
-}
-
-func do(f func(Lang)) {
-	input, err := os.Open("./lang.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	dec := json.NewDecoder(input)
-	for {
-		var lang Lang
-		err := dec.Decode(&lang)
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			log.Fatal(err)
-		}
-		f(lang)
-	}
-}
-
-func count(name, url string, c chan<- string) {
-	start := time.Now()
-	r, err := http.Get(url)
-	if err != nil {
-		c <- fmt.Sprintf("%s: %s", name, err)
-		return
-	}
-	n, _ := io.Copy(ioutil.Discard, r.Body)
-	r.Body.Close()
-	dt := time.Since(start).Seconds()
-	c <- fmt.Sprintf("%s %d [%.2fs]\n", name, n, dt)
-}
-
-func main() {
-	start := time.Now()
-	c := make(chan string)
-	n := 0
-	do(func(lang Lang) {
-		n++
-		go count(lang.Name, lang.URL, c)
-	})
-	for i := 0; i < n; i++ {
-		fmt.Print(<-c)
-	}
-	fmt.Printf("%.2fs total\n", time.Since(start).Seconds())
-}
-```
-
-```
-func main() {
-	start := time.Now()
-	c := make(chan string)
-	n := 0
-	do(func(lang Lang) {
-		n++
-		go count(lang.Name, lang.URL, c)
-	})
-
-	timeout := time.After(10 * time.Second)
-	for i := 0; i < n; i++ {
-		select {
-		case result := <-c:
-			fmt.Print(result)
-		case <-timeout:
-			fmt.Print("Timed out\n")
-			return
-		}
-	}
-	fmt.Printf("%.2fs total\n", time.Since(start).Seconds())
-}
-```
+#### 7.11 Congratulations!

@@ -1,0 +1,8 @@
+# https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint#:~:text=Disable,enable%20linting%2C%20run%20the%20markdownlint.
+
+MD010: false
+MD013: false
+MD022:
+    lines_above: 1
+    lines_below: 1
+MD026: false

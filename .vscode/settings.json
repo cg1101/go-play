@@ -1,0 +1,11 @@
+{
+    "cSpell.ignoreWords": [
+        "Printf",
+        "Println",
+        "Sprintf",
+        "goroutine",
+        "goroutines",
+        "struct",
+        "structs",
+    ]
+}
