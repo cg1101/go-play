@@ -1,3 +1,7 @@
 go 1.20
 
-use ./src/get-started-with-go
+use (
+	./src/create-a-go-module/greetings
+	./src/create-a-go-module/hello
+	./src/get-started-with-go
+)
